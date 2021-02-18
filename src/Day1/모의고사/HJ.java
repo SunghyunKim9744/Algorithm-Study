@@ -1,7 +1,11 @@
 package Day1.모의고사;
 
 public class HJ {
-
+	public static void main(String[] args) {
+		int[] answers = {1,2,3,4,5};
+		System.out.println(solution(answers));
+	}
+	
 	public static int[] solution(int[] answers) {
         int[] answer = {};
         int[] p1 = {1, 2, 3, 4, 5};
@@ -14,10 +18,5 @@ public class HJ {
         
         return answer;
     }
-	
-	public static void main(String[] args) {
-		int[] answers = {1,2,3,4,5};
-		System.out.println(solution(answers));
-	}
 
 }
