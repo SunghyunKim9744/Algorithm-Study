@@ -1,4 +1,4 @@
-package Day1.Ã¼À°º¹;
+package Day1.ì²´ìœ¡ë³µ;
 
 public class Sh {
 	public static void main(String[] args) {
