@@ -1,9 +1,7 @@
 package Day1.모의고사;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class HJ {
 
@@ -30,23 +28,15 @@ public class HJ {
 				answer[2]++;
 		}
 
-		// 정렬
-		List<Map<Integer, Integer>> list = new ArrayList<>();
-		for (int i = 0; i < answer.length; i++) {
-			if (answer[i] == 0)
-				continue;
+		// 최고값 구하기
+		int max = Math.max(answer[0], Math.max(answer[1], answer[2]));
 
-			Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-			map.put(i + 1, answer[i]);
-			list.add(map);
-		}
+		List<Integer> list = new ArrayList<>();
+		for (int i = 0; i < answer.length; i++)
+			if (max == answer[i])
+				list.add(i + 1);
 
-		for (int i = 0; i < list.size(); i++)
-			for (int j = 0; j < list.size() - 1 - i; j++) {
-				
-			}
-		
-		return answer;
+		return list.stream().mapToInt(i -> i).toArray();
 	}
 
 }
