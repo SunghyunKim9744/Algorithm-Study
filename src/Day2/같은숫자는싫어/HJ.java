@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HJ {
+	
 	public static void main(String[] args) {
 		int[] arr = { 4, 4, 4, 3, 3 };
 		System.out.println(solution(arr));

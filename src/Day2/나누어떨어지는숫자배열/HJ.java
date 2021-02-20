@@ -26,8 +26,6 @@ public class HJ {
 				}
 			}
 
-		System.out.println(Arrays.toString(arr));
-		
 		// 숫자 구하기
 		for (int element : arr) {
 			if (element % divisor == 0)
