@@ -88,6 +88,17 @@ int[] arr = list.stream().mapToInt(i -> i).toArray()
 
 ### Collection
 
+### Comparable & Comparator
+#### Comparable : this.compareTo(Object another)
+* 클래스 내부에 구현
+* 파라미터 1개
+* 객체 정렬하는 기본 기준을 제공
+
+#### Comparator : compare(Object o1, Object o2)
+* 클래스 외부에서 Collections.sort(item, new Comparator<>(){})나 Arrays.sort(item, new Comparator<>(){})로 구현
+* 파라미터 2개
+* 사용자 설정 기준
+
 ## 그 외
 1. 온라인 코딩 테스트 시 검색 가능
 	상황따라 달라지니 확인 필수
