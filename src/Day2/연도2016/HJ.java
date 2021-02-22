@@ -2,8 +2,8 @@ package Day2.연도2016;
 
 public class HJ {
 	public static void main(String[] args) {
-		int a = 5;
-		int b = 24;
+		int a = 1;
+		int b = 1;
 		System.out.println(solution(a, b));
 	}
 
@@ -14,15 +14,12 @@ public class HJ {
 		int totalDay = 0;
 
 		// 총일수 구하기
-		for (int i = 0; i < a; i++) {
-			if (i == a - 1) {
-				totalDay += b;
-				break;
-			}
+		for (int i = 0; i < a - 1; i++)
 			totalDay += dayOfMonth[i];
-		}
+		
+		totalDay += b;
 
-		int numberOfWeek = ((totalDay % 7) + 11) % 7;
+		int numberOfWeek = (totalDay + 4) % 7;
 		return dayOfWeek[numberOfWeek];
 	}
 

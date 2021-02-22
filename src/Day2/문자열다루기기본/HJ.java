@@ -15,10 +15,10 @@ public class HJ {
 		try {
 			Integer.parseInt(s);
 			answer = true;
+			return answer;
 		} catch(Exception e) {
 			return answer;
 		}
 		
-		return answer;
 	}
 }
