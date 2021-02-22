@@ -6,7 +6,19 @@ public class HJ {
 		String s = "Zbcdefg";
 		System.out.println(solution(s));
 	}
-
+	
+//	// 건영오빠 풀이
+//	public static String solution(String s) {
+//		String answer = "";
+//
+//		String[] strings = s.split("");
+//		Arrays.sort(strings, Collections.reverseOrder());
+//		for (String st : strings)
+//			answer += st;
+//
+//		return answer;
+//	}
+	
 	public static String solution(String s) {
 		String answer = "";
 		char[] charArr = new char[s.length()];

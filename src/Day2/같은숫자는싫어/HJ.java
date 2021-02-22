@@ -6,7 +6,7 @@ import java.util.List;
 public class HJ {
 	
 	public static void main(String[] args) {
-		int[] arr = { 4, 4, 4, 3, 3 };
+		int[] arr = { 1, 4, 4, 4, 3, 3 , 0, 1, 1};
 		System.out.println(solution(arr));
 	}
 
@@ -16,14 +16,12 @@ public class HJ {
 		List<Integer> list = new ArrayList<>();
 		list.add(criteria);
 
-		for (int i = 0; i < arr.length; i++) {
-			if (arr[i] == criteria) {
-				continue;
+		for (int i = 0; i < arr.length; i++)
+			if (arr[i] != criteria) {
+				criteria = arr[i];
+				list.add(arr[i]);
 			}
-			criteria = arr[i];
-			list.add(arr[i]);
-		}
-
+		
 		return list.stream().mapToInt(i -> i).toArray();
 	}
 }
