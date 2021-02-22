@@ -35,6 +35,8 @@ public class HJ {
 		for(int i=3; i<=n; i++)
 			if(i % 2 == 1)
 				list.add(i);
+		
+		
 
 		return answer;
 	}
