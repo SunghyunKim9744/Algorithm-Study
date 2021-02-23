@@ -71,6 +71,11 @@ for(String s : strArr)
 	* append
 	* insert
 * String, String Builder, String Buffer
+* string 합치기
+```
+String str = "str1" + "str2" + "str3";
+String str = String.join(" ", strArr);
+```
 
 ### Arrays
 * 정렬

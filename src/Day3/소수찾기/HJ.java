@@ -5,7 +5,9 @@ import java.util.List;
 
 public class HJ {
 	public static void main(String[] args) {
-		int n = 1000000;	// 1000000*1000000
+		// 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+		// 73, 79, 83, 89, 97
+		int n = 100; // 1000000*1000000
 		System.out.println(solution(n));
 	}
 
@@ -26,17 +28,34 @@ public class HJ {
 //
 //		return answer;
 //	}
-	
+
 	public static int solution(int n) {
 		int answer = 0;
 		List<Integer> list = new ArrayList<>();
 		list.add(2);
-		
-		for(int i=3; i<=n; i++)
-			if(i % 2 == 1)
+		for (int i = 3; i <= n; i++)
+			if (i % 2 == 1)
 				list.add(i);
+
+		int i = 0;
+		int j = 0;
+		while (i < list.size()) {
+			boolean remainder = (list.get(i) % list.get(j) == 0) ? true : false;
+
+			if (j < i && remainder) {
+				i++;
+				j = 0;
+			} else if (j == i && remainder) {
+				answer++;
+				i++;
+				j = 0;
+			} else {
+				j++;
+			}
+			
+		}
 
 		return answer;
 	}
-	
+
 }

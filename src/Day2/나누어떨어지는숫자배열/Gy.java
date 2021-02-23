@@ -14,23 +14,23 @@ public class Gy {
 		solution(arr1, d1);
 		solution(arr2, d2);
 		solution(arr3, d3);
-		
+
 	}
 
 	public static int[] solution(int[] arr, int divisor) {
 		int[] answer = {};
-		
+
 		Arrays.sort(arr);
 		List<Integer> list = new ArrayList<>();
-		
-		for(int i : arr)
-			if(i%divisor == 0)
+
+		for (int i : arr)
+			if (i % divisor == 0)
 				list.add(i);
-		
-		if(list.size() == 0)
+
+		if (list.size() == 0)
 			list.add(-1);
-		
-		answer =  list.stream().mapToInt(i->i).toArray();
+
+		answer = list.stream().mapToInt(i -> i).toArray();
 
 		return answer;
 	}
