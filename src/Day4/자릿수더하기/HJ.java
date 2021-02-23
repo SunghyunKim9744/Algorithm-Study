@@ -1,4 +1,4 @@
-package Day3.자릿수더하기;
+package Day4.자릿수더하기;
 
 import java.util.Arrays;
 

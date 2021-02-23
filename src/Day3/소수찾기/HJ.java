@@ -49,10 +49,8 @@ public class HJ {
 				answer++;
 				i++;
 				j = 0;
-			} else {
+			} else
 				j++;
-			}
-			
 		}
 
 		return answer;
