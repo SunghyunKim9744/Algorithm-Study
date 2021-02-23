@@ -12,24 +12,27 @@ public class HJ {
 
 	// 방법 1) (2.68ms, 53.4MB) - (22.48ms, 63.7MB)
 	public static int[] solution(int[] arr) {
-        int[] answer = {};
-        
-        if(arr.length == 1) {
-        	answer = new int[1];
-        	answer[0] = -1;
-        	return answer;
-        }
-        
-        List<Integer> list = new ArrayList<Integer>();
-        for(int item : arr)
-        	list.add(item);
+		int[] answer = {};
 
-        list.remove(list.indexOf(list.stream().mapToInt(i -> i).min().getAsInt()));
-        answer = list.stream().mapToInt(i -> i).toArray();
-        
-        return answer;
-    }
-	
+		if (arr.length == 1) {
+			answer = new int[1];
+			answer[0] = -1;
+			return answer;
+		}
+
+		List<Integer> list = new ArrayList<Integer>();
+		for (int item : arr)
+			list.add(item);
+
+		list.remove(list.indexOf(list.stream()
+										.mapToInt(i -> i)
+										.min()
+										.getAsInt()));
+		answer = list.stream().mapToInt(i -> i).toArray();
+
+		return answer;
+	}
+
 //	// 방법 2) (0.02ms, 52.3MB) - (2.62ms, 66.7MB)
 //	public static int[] solution(int[] arr) {
 //		int[] answer = {};
