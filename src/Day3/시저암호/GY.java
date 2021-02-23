@@ -23,5 +23,6 @@ public class GY {
 
 		return answer;
 	}
-
 }
+
+// String builder 사용해라

@@ -4,7 +4,7 @@ public class GY {
 
 	public static void main(String[] args) {
 //		System.out.println(solution("try hello world"));
-		System.out.println(solution("_try      HEllo  world  "));
+		System.out.println(solution(" try      HEllo  world  "));
 	}
 
 	public static String solution(String s) {
@@ -20,8 +20,9 @@ public class GY {
 				for (int j = 0; j < word.length; j++)
 					answer += (j % 2 == 0) ? String.valueOf(word[j]).toUpperCase()
 							: String.valueOf(word[j]).toLowerCase();
-				answer += " ";
 			}
+			
+			answer += " ";
 		}
 
 		answer = answer.substring(0, answer.length() - 1);
