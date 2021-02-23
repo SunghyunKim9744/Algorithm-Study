@@ -9,9 +9,23 @@ public class HJ {
 		System.out.println(Arrays.toString(solution(n, m)));
 	}
 
-	// (1.66ms, 52.1MB) - (4.21ms, 52.5MB)
+	// (0.02ms, 53MB) - (0.05ms, 53MB)
 	public static int[] solution(int n, int m) {
-		int[] answer = {};
+		int[] answer = { 1, 1 };
+		int divisor = 2;
+
+		while (!(n == 1 && m == 1) && (n < m ? divisor <= n : divisor <= m)) {
+			if (n % divisor == 0 && m % divisor == 0) {
+				n /= divisor;
+				m /= divisor;
+				answer[0] *= divisor;
+				divisor = 2;
+			} else
+				divisor++;
+		}
+		
+		answer[1] = answer[0] * n * m;
+
 		return answer;
 	}
 
