@@ -6,29 +6,26 @@ package Day3.이상한문자만들기;
 
 public class HJ {
 	public static void main(String[] args) {
-		String s = "tRy hello      world    a";
+		String s = "  tRy hello      world    a  ";
 		System.out.println(solution(s));
 	}
 
 	public static String solution(String s) {
-		String answer = "";
-		String[] words = s.split("\\s{1,}");
+		char[] words = s.toCharArray();
 
-		for (int i = 0; i < words.length; i++) {
-			char[] charArr = words[i].toCharArray();
-			
-			for (int j = 0; j < charArr.length; j++)
-				if (j % 2 == 0)
-					charArr[j] = Character.toUpperCase(charArr[j]);
-				else
-					charArr[j] = Character.toLowerCase(charArr[j]);
-			
-			words[i] = String.valueOf(charArr);
-			System.out.println(words[i]);
+		for (int i = 0, j = 0; i < words.length; i++) {
+			if (words[i] == ' ') {
+				j = 0;
+				continue;
+			}
+
+			if (j++ % 2 == 0)
+				words[i] = Character.toUpperCase(words[i]);
+			else
+				words[i] = Character.toLowerCase(words[i]);
 		}
-		
-		answer = String.join(" ", words);
-		return answer;
+
+		return String.valueOf(words);
 	}
 
 }

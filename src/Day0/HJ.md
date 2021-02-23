@@ -1,5 +1,19 @@
 # 현지 정리 노트
 
+## 목차
+1. 알고리즘
+	* 정렬
+	* 그리디
+	
+2. 함수/문법
+	* String
+	* Arrays
+	* Collections
+	* Comparable & Comparator
+	* 정규 표현식
+	
+3. 그 외
+
 ## 알고리즘
 
 ### 정렬
@@ -10,7 +24,6 @@
 	* 고정된 인덱스 값과 최소값 인덱스 값을 외부 for문에서 변경
 	* 교환 시간 복잡도 :O(n)
 	* 비교 시간 복잡도 : O(n^2)
-	* 버블정렬보다 낫다
 ```
 for (int i = 0; i < arr.length - 1; i++) {
 	int min = i;
@@ -103,6 +116,18 @@ int[] arr = list.stream().mapToInt(i -> i).toArray()
 * 클래스 외부에서 Collections.sort(item, new Comparator<>(){})나 Arrays.sort(item, new Comparator<>(){})로 구현
 * 파라미터 2개
 * 사용자 설정 기준
+
+### 정규표현식(Regular Expression)
+| 표현		|	뜻		| 예시		|   결과				|
+| ---------	| ---------	| ---------	| -----------------	|
+| ?			| 0...1		| ab?c		| ac, abc			|
+| *			| 0...n		| ab*c		| ac, abc, abbbbbbc	|
+| {n}		| 정확히 n개	| a{2}b		| aab				|
+| {min, }	| min...n	| a{2,}b		| aab, aaaaaaab		|
+| {min, max}	| min...max	| a{2,4}b	| aab, aaab, aaaab	|
+| []			| 1			| [abc]		| a,b,c				|
+| -			| 연속		| [a-z]		| a,b,...,y,z		|
+| \d			| =[0-9]		| [0-9]		| 1,2,3,...,9,0		|
 
 ## 그 외
 1. 온라인 코딩 테스트 시 검색 가능
