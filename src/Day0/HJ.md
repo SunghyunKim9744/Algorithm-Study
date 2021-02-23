@@ -91,6 +91,10 @@ String str = String.join(" ", strArr);
 ```
 
 ### Arrays
+* 리스트 생성
+```
+Arrays.asList(objArr);	// 기본형 배열은 안됨. 객체형 배열만 가능 => String, Date, ...
+```
 * 정렬
 ```
 Arrays.sort(arr, compare);

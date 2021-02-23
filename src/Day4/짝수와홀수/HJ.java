@@ -6,8 +6,9 @@ public class HJ {
 		System.out.println(solution(n));
 	}
 
+	// (0.01ms, 53.8MB) - (0.02ms, 55.7MB)
 	public static String solution(int num) {
-		String answer = "";
-		return answer;
+		return (num % 2 == 0) ? "Even" : "Odd";
 	}
+
 }
