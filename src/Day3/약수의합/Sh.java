@@ -4,9 +4,11 @@ public class Sh {
 
 	public static void main(String[] args) {
 
-		int n = 12;
+		int n = 4;
 		
 		int answer = solution(n);
+		
+		System.out.println(answer);
 
 	}
 	
