@@ -94,6 +94,12 @@ String str = String.join(" ", strArr);
 * 리스트 생성
 ```
 Arrays.asList(objArr);	// 기본형 배열은 안됨. 객체형 배열만 가능 => String, Date, ...
+
+// 기본형 배열 => 리스트
+int[] arr = {1, 2, 3, 4, 5};
+
+List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+List<Integer> list2 = IntStream.of(arr).boxed().collect(Collectors.toList());
 ```
 * 정렬
 ```
@@ -106,6 +112,10 @@ Arrays.copyOfRange(array, from, to);
 * List를 int형 배열로 변환
 ```
 int[] arr = list.stream().mapToInt(i -> i).toArray()
+```
+* 배열 생성과 초기화 동시
+```
+int[] arr = new int[] {-1};
 ```
 
 ### Collection
