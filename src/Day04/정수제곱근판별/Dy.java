@@ -21,8 +21,6 @@ public class Dy {
 	        }else if(square < n) {
 	        	low = num;
 	        }
-	        System.out.println(low);
-	        System.out.println(high);
         }
         
         return answer;
