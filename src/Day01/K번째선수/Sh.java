@@ -1,4 +1,4 @@
-package Day1.K번째선수;
+package Day01.K번째선수;
 
 import java.util.Arrays;
 

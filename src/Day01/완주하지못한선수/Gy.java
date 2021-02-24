@@ -1,4 +1,4 @@
-package Day1.완주하지못한선수;
+package Day01.완주하지못한선수;
 
 import java.util.Arrays;
 

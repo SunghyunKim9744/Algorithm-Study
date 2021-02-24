@@ -1,7 +1,5 @@
 package Day4.제일작은수제거;
 
-import java.util.Arrays;
-
 public class Sh {
 	public static void main(String[] args) {
 		int[] arr = { 4, 3, 2, 1 };

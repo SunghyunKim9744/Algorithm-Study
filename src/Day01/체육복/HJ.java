@@ -1,4 +1,4 @@
-package Day1.체육복;
+package Day01.체육복;
 
 import java.util.Arrays;
 import java.util.List;
