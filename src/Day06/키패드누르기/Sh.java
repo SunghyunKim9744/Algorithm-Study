@@ -11,6 +11,7 @@ public class Sh {
 	}
 
 	// 9:36 ~ 10:34
+	// (0.05ms, 52.4MB) - > (3.17ms, 52.6MB)
 	private static String solution(int[] numbers, String hand) {
 		String answer = "";
 		StringBuilder strb = new StringBuilder();
