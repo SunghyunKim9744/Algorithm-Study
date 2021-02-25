@@ -12,6 +12,10 @@ public class Sh {
 
 	// 9:36 ~ 10:34
 	// (0.05ms, 52.4MB) - > (3.17ms, 52.6MB)
+	// 시간이 오래 걸린 이유
+	// 1. int[] numbers 인데 String[] numbers로 해버림 - > 문제를 잘 읽기
+	// 2. 처음에 *과 #의 위치에 있다는 상황을 생각 못함 - > 기본적인 논리적 사고 부족.
+	// 3. 눌러야할 번호와 현재 왼,오른손의 위치 거리를 구하는 알고리즘 - > 가장 오래 걸림 - > 기본적인 수학적 사고인데 너무 오래 걸림. + (0을 눌렀을 때 처리) 
 	private static String solution(int[] numbers, String hand) {
 		String answer = "";
 		StringBuilder strb = new StringBuilder();
