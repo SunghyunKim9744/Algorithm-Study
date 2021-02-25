@@ -10,22 +10,27 @@ public class HJ {
 	// (0.04ms, 53.8MB) - (1.08ms, 53.3MB)
 	public static String solution(int[] numbers, String hand) {
 		StringBuilder sb = new StringBuilder();
-		int[][] keypad = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { -1, 0, -1 } };
-		int[] current = { -1, -1 };
+		int[][] keypad = {
+							{ 1, 2, 3 },
+							{ 4, 5, 6 },
+							{ 7, 8, 9 },
+							{ -1, 0, -1 }
+						};
+		int[] position = { -1, -1 };
 
 		for (int num : numbers) {
 			switch (num) {
 			case 1:
 			case 4:
 			case 7:
-				current[0] = num;
+				position[0] = num;
 				sb.append("L");
 				break;
 
 			case 3:
 			case 6:
 			case 9:
-				current[1] = num;
+				position[1] = num;
 				sb.append("R");
 				break;
 
@@ -38,17 +43,20 @@ public class HJ {
 				// 인덱스 번호 갖고 오기
 				for (int i = 0; i < 4; i++)
 					for (int j = 0; j < 3; j++) {
-						if (keypad[i][j] == num) {
+						// current number
+						if (num == keypad[i][j]) {
 							numIdx[0] = i;
 							numIdx[1] = j;
 						}
 
-						if (keypad[i][j] == current[0]) {
+						// left
+						if (position[0] == keypad[i][j]) {
 							left[0] = i;
 							left[1] = j;
 						}
 
-						if (keypad[i][j] == current[1]) {
+						// right
+						if (position[1] == keypad[i][j]) {
 							right[0] = i;
 							right[1] = j;
 						}
@@ -60,20 +68,20 @@ public class HJ {
 				
 				// 거리에 따른 키패드 입력 선택
 				if (distances[0] < distances[1]) {
-					current[0] = num;
+					position[0] = num;
 					sb.append("L");
 				}
 				else if (distances[0] > distances[1]) {
-					current[1] = num;
+					position[1] = num;
 					sb.append("R");
 				}
 				else {
 					if (hand.equals("right")) {
-						current[1] = num;
+						position[1] = num;
 						sb.append("R");
 					}
 					else {
-						current[0] = num;
+						position[0] = num;
 						sb.append("L");
 					}
 				}

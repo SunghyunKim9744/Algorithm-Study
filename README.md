@@ -141,16 +141,19 @@ int[] arr = new int[] {-1};
 * 사용자 설정 기준
 
 ### 정규표현식(Regular Expression)
-| 표현		|	뜻		| 예시		|   결과				|
-| ---------	| ---------	| ---------	| -----------------	|
-| ?			| 0...1		| ab?c		| ac, abc			|
-| *			| 0...n		| ab*c		| ac, abc, abbbbbbc	|
-| {n}		| 정확히 n개	| a{2}b		| aab				|
-| {min, }	| min...n	| a{2,}b		| aab, aaaaaaab		|
-| {min, max}	| min...max	| a{2,4}b	| aab, aaab, aaaab	|
-| []			| 1			| [abc]		| a,b,c				|
-| -			| 연속		| [a-z]		| a,b,...,y,z		|
-| \d			| =[0-9]		| [0-9]		| 1,2,3,...,9,0		|
+| 표현		|	뜻			| 예시			|   결과								|
+| ---------	| --------------	| --------------	| ----------------------------------	|
+| ?			| 0...1			| ab?c			| ac, abc							|
+| *			| 0...n			| ab*c			| ac, abc, abbbbbbc					|
+| {n}		| 정확히 n개		| a{2}b			| aab								|
+| {min, }	| min...n		| a{2,}b			| aab, aaaaaaab						|
+| {min, max}	| min...max		| a{2,4}b		| aab, aaab, aaaab					|
+| []			| 1				| [abc]			| a,b,c								|
+| -			| 연속			| [a-z]			| a,b,...,y,z						|
+| \d			| =[0-9]			| [0-9]			| 1,2,3,...,9,0						|
+| \w			| =[a-zA-Z0-9_]	| [a-zA-Z0-9_]	| 1,2,..,9,0,a,b,...,z,A,B,...,Z,_	|
+| ^			| 시작			| ^\d			| 12345								|
+| [^]		| Not Included	| [^\d]			| abdfjs+_-!#kajfldsfj				|
 
 ## IV. 그 외
 1. 온라인 코딩 테스트 시 검색 가능
