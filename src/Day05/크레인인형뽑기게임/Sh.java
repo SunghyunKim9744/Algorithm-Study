@@ -74,24 +74,57 @@ public class Sh {
 
 	// (0.06ms, 51.7MB) - > (1.19ms, 52.1MB)
 	// 방법 3. 스택 이용
+//	public static int solution(int[][] board, int[] moves) {
+//		int answer = 0;
+//
+//		Deque<Integer> stack = new ArrayDeque<>();
+//
+//		for (int i = 0; i < moves.length; i++) {
+//			int index = moves[i] - 1;
+//			for (int j = 0; j < board.length; j++) {
+//				if (board[j][index] != 0) {
+//					if (!stack.isEmpty() && stack.peekFirst() == board[j][index]) {
+//						stack.pollFirst();
+//						answer += 2;
+//					} else
+//						stack.offerFirst(board[j][index]);
+//					board[j][index] = 0;
+//					break;
+//				}
+//			}
+//		}
+//		return answer;
+//	}
+	
+	// (0.09ms, 52MB) - > (1.81ms, 52.4MB)
+	// 스택 + 큐
 	public static int solution(int[][] board, int[] moves) {
 		int answer = 0;
 
-		Deque<Integer> stack = new ArrayDeque<>();
-
-		for (int i = 0; i < moves.length; i++) {
-			int index = moves[i] - 1;
-			for (int j = 0; j < board.length; j++) {
-				if (board[j][index] != 0) {
-					if (!stack.isEmpty() && stack.peekFirst() == board[j][index]) {
-						stack.pollFirst();
-						answer += 2;
-					} else
-						stack.offerFirst(board[j][index]);
-					board[j][index] = 0;
-					break;
-				}
+		List<Deque<Integer>> stackList = new ArrayList<>();
+		for(int i=0; i<board.length; i++) {
+			Deque<Integer> temp = new ArrayDeque<>();
+			for(int j=0; j<board.length; j++) {
+				if(board[j][i] != 0)
+					temp.offerFirst(board[j][i]);
 			}
+			stackList.add(temp);
+		}
+
+		
+		Deque<Integer> stack = new ArrayDeque<>();
+		for (int i = 0; i < moves.length; i++) {
+			int index = moves[i]-1;
+			if(stackList.get(index).peekLast() == null)
+				break;
+			int get = stackList.get(index).pollLast();
+			if( !stack.isEmpty() && get == stack.peekFirst()) {
+				stack.pollFirst();
+				answer+=2;
+			}
+			else
+				stack.offerFirst(get);
+				
 		}
 		return answer;
 	}
