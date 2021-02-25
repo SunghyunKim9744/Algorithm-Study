@@ -13,6 +13,7 @@ public class Sh {
 	}
 
 	// 7:32 ~ 7:40
+	// (0.06ms, 52.9MB) - > (0.08ms, 52.3MB)
 	private static int solution(int n) {
 		int answer = 0;
 		
