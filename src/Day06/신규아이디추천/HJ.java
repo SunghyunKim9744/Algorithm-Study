@@ -21,9 +21,8 @@ public class HJ {
 		answer = (answer.length() > 15) ? answer.substring(0, 15) : answer;
 		answer = answer.replaceAll("[.]$", "");
 
-		if (answer.length() < 3)
-			while (answer.length() < 3)
-				answer += answer.substring(answer.length() - 1);
+		while (answer.length() < 3)
+			answer += answer.substring(answer.length() - 1);
 
 		return answer;
 	}
