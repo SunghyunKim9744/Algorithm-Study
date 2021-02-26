@@ -20,7 +20,7 @@ public class GY {
 		// 1단계
 		new_id = new_id.toLowerCase();
 		System.out.println("1단계 : " + new_id);
-		
+
 		// 2단계
 		char[] id2 = new_id.toCharArray();
 		StringBuilder sb = new StringBuilder();

@@ -40,7 +40,7 @@ public class Sh {
 //
 //			else {
 //
-//				int leftDistance = Math.abs(leftNum - numbers[i]) / 3 + Math.abs(leftNum - numbers[i]) % 3;
+//				int leftDistance = Math.abs((leftNum-1)/3 - (numbers[i]-1)/3) + Math.abs((leftNum-1)%3 - (numbers[i]-1)%3);
 //				int rightDistance = Math.abs(rightNum - numbers[i]) / 3 + Math.abs(rightNum - numbers[i]) % 3;
 //				if (numbers[i] == 0) {
 //					leftDistance = Math.abs(leftNum - 11) / 3 + Math.abs(leftNum - 11) % 3;
@@ -100,21 +100,21 @@ public class Sh {
 		for(int i=0; i<numbers.length; i++) {
 			
 			int num = numbers[i];
-			String number = String.valueOf(num);
 			
-			if(leftHand.contains(number)) {
+			
+			if(num%3==1) {
 				str.append("L");
 				left = num;
 			}
 			
-			else if(rightHand.contains(number)) {
+			else if(num%3==0) {
 				str.append("R");
 				right = num;
 			}
 			
 			else {
-				int leftDistance = Math.abs(num-left)/3 + Math.abs(num-left)%3;
-				int rightDistance = Math.abs(num-right)/3 + Math.abs(num-right)%3;
+				int leftDistance = Math.abs((num-1)/3-(left-1)/3) + Math.abs((num-1)%3-(left-1)%3);
+				int rightDistance = Math.abs((num-1)/3-(right-1)/3) + Math.abs((num-1)%3-(right-1)%3);
 				if(leftDistance == rightDistance) {
 					if(hand.equals("right")) {
 						str.append("R");
