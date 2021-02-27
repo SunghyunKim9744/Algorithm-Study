@@ -32,26 +32,23 @@ public class HJ {
 	public static int solution(int n) {
 		int answer = 0;
 		List<Integer> list = new ArrayList<>();
-		list.add(2);
-		for (int i = 3; i <= n; i++)
-			if (i % 2 == 1)
+
+		for (int i = 2, len = (int) Math.sqrt(n); i < len; i++) {
+			int count = 0;
+			for (int j = 1; j <= i; j++)
+				if (i % j == 0)
+					count++;
+
+			if (count == 2)
 				list.add(i);
-
-		int i = 0;
-		int j = 0;
-		while (i < list.size()) {
-			boolean remainder = (list.get(i) % list.get(j) == 0) ? true : false;
-
-			if (j < i && remainder) {
-				i++;
-				j = 0;
-			} else if (j == i && remainder) {
-				answer++;
-				i++;
-				j = 0;
-			} else
-				j++;
 		}
+		System.out.println(n);
+		for (int i = 0, len = list.size(); i < len; i++) {
+			n = n / list.get(i);
+		}
+
+		System.out.println(list);
+		System.out.println(n);
 
 		return answer;
 	}
