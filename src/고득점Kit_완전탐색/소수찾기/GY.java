@@ -23,11 +23,11 @@ public class GY {
 		for (String s : nums)
 			set.add(Integer.parseInt(s));
 
-		for (int i = 0; i < n; i++)
-			for (int j = i; j < n; j++)
-				set.add(Integer.parseInt(nums[i] + nums[j]));
-
-		System.out.println(set.toString());
+//		for (int i = 0; i < n; i++)
+//			for (int j = i; j < n; j++)
+//				set.add(Integer.parseInt(nums[i] + nums[j]));
+//
+//		System.out.println(set.toString());
 
 		return answer;
 	}
