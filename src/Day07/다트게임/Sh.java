@@ -3,7 +3,7 @@ package Day07.다트게임;
 public class Sh {
 
 	public static void main(String[] args) {
-		String dartResult = "1D#2S*3S";
+		String dartResult = "1S#2S*3S";
 
 		int answer = solution(dartResult);
 
@@ -11,6 +11,7 @@ public class Sh {
 	}
 
 	// 10:18 ~ 11:50
+	// (0.13ms, 52.2MB) - > (3.26ms, 52.4MB)
 	private static int solution(String dartResult) {
 		int answer = 0;
 
