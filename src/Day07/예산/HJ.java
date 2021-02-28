@@ -9,7 +9,7 @@ public class HJ {
 		System.out.println(solution(d, budget));
 	}
 
-	// (0.40ms, 53.4MB) - (2.28ms, 52.8MB)
+	// (0.39ms, 52.9MB) - (0.53ms, 52.6MB)
 	public static int solution(int[] d, int budget) {
 		int answer = 0;
 

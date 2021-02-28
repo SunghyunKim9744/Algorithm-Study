@@ -71,6 +71,34 @@ for(int i=0; i < arr.length - 1; i++)
 ```
 ```
 
+### 해시
+1. 해시 함수
+	* 임의의 크기 가진 데이터 -> 고정된 크기의 값
+	: 결과값 => hash table의 index로 사용됨
+
+2. 해시 테이블
+	* key와 value 쌍
+		
+3. 테이블 종류
+	* Direct Addressing Table
+		- key 범위 만큼 table 크기 만들어짐
+		=> 문제점 : key가 해당되지 않는 애들의 공간도 만들어 메모리 낭비가 발생
+	* Hash Table
+		- hash(key)만큼 table 만들어짐
+		=> 문제점 : key값이 달라도 hash값이 같아 충돌이 생길 수 있음
+		=> 해결 : chaining => 인덱스로 구분하되, hash(key)/인덱스가 같으면 Linked List/Tree로 연결
+		
+4. 특징
+	* key값 조금만 변해도 다른 값이 나옴
+		=> 해시값 통해 원래의 key 추적 못함
+		=> 같은 key값을 입력하면 같은 hash 값이 나옴
+	* 다른 key값 입력해도 같은 hash값 나올 수 있음 (중복 가능)
+
+5. 사용
+	* 해시 함수 => 해시 테이블/Hash Map
+	* key-value 사용 시
+	* 빠른 탐색/조건 확인 시
+
 ### 그리디
 
 ## III. 함수/문법
