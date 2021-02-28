@@ -33,7 +33,7 @@ public class Gy {
 				break;
 			}
 		}
-//		System.out.println(answer);
+		System.out.println(answer);
 		return answer;
 
 	}
