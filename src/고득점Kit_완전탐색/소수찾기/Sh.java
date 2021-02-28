@@ -16,6 +16,7 @@ public class Sh {
 	}
 
 	// 12:56 ~
+	// (2.04ms, 52.8MB) - > (149.65ms, 65MB)
 	private static int solution(String numbers) {
 		int answer = 0;
 		
@@ -87,7 +88,7 @@ public class Sh {
 			int cnt = 0;
 			if(i<=1)
 				cnt++;
-			for(int j=2; j<Math.sqrt(i); j++) {
+			for(int j=2; j<=Math.sqrt(i); j++) {
 				
 				if(i%j ==0) {
 					cnt++;
