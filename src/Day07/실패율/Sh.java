@@ -70,49 +70,93 @@ public class Sh {
 	
 	
 	// (0.50ms, 52.6MB) - > (470.21ms, 62MB)
+//	private static int[] solution(int N, int[] stages) {
+//		int[] answer = null;
+//
+//		answer = new int[N];
+//		Map<Integer,Double> map = new HashMap<>();
+//		
+//		for(int i=0; i<N; i++) {
+//			int failCnt = 0;
+//			int totalCnt = 0;
+//			double fail = 0;
+//			for(int j=0; j<stages.length; j++) {
+//				if( stages[j] == i+1) {
+//					failCnt++;
+//					totalCnt++;
+//				}
+//				else if(stages[j] > i+1)
+//					totalCnt++;
+//			}
+//				
+//			
+//			fail = (double)failCnt / totalCnt;
+//			if(totalCnt == 0)
+//				fail = 0;
+//			map.put(i+1,fail);
+//		}
+//		List<Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
+//		
+//		list.sort((m1,m2)->{
+//			return m2.getValue().compareTo(m2.getValue());
+//		});
+////		list.sort(new Comparator<Entry<Integer,Double>>() {
+////
+////			@Override
+////			public int compare(Entry<Integer, Double> o1, Entry<Integer, Double> o2) {
+////				
+////				return o2.getValue().compareTo(o1.getValue());
+////			}
+////			
+////		});
+//
+//		int index = 0;
+//		for(Entry<Integer,Double>  entry: list)
+//			answer[index++] = entry.getKey();
+//		return answer;
+//	}
+	
+	// (0.01ms, 51.8MB) - > (444.76ms, 61.9MB)
 	private static int[] solution(int N, int[] stages) {
 		int[] answer = null;
 
 		answer = new int[N];
-		Map<Integer,Double> map = new HashMap<>();
-		
-		for(int i=0; i<N; i++) {
+
+		double[] fail = new double[N];
+
+		for (int i = 0; i < N; i++) {
 			int failCnt = 0;
 			int totalCnt = 0;
-			double fail = 0;
-			for(int j=0; j<stages.length; j++) {
-				if( stages[j] == i+1) {
+			for (int j = 0; j < stages.length; j++) {
+				if (stages[j] == i + 1) {
 					failCnt++;
 					totalCnt++;
-				}
-				else if(stages[j] > i+1)
+				} else if (stages[j] > i + 1)
 					totalCnt++;
 			}
-				
-			
-			fail = (double)failCnt / totalCnt;
-			if(totalCnt == 0)
-				fail = 0;
-			map.put(i+1,fail);
-		}
-		List<Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
-		
-		list.sort((m1,m2)->{
-			return m2.getValue().compareTo(m2.getValue());
-		});
-//		list.sort(new Comparator<Entry<Integer,Double>>() {
-//
-//			@Override
-//			public int compare(Entry<Integer, Double> o1, Entry<Integer, Double> o2) {
-//				
-//				return o2.getValue().compareTo(o1.getValue());
-//			}
-//			
-//		});
 
-		int index = 0;
-		for(Entry<Integer,Double>  entry: list)
-			answer[index++] = entry.getKey();
+			fail[i] = (double) failCnt / totalCnt;
+			if(totalCnt == 0)
+				fail[i] = 0;
+		}
+
+
+		for (int i = 0; i < fail.length; i++) {
+			int maxIndex = 0;
+			double maxValue = fail[0];
+			for (int j = 0; j < fail.length; j++) {
+				if (maxValue < fail[j]) {
+					maxIndex = j;
+					maxValue = fail[j];
+				}
+			}
+			
+			fail[maxIndex] = -1;
+			answer[i] = maxIndex+1;
+
+		}
+
+
 		return answer;
 	}
 	
