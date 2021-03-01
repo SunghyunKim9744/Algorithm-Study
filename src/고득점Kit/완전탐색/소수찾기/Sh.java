@@ -9,8 +9,8 @@ import java.util.Set;
 public class Sh {
 
 	public static void main(String[] args) {
-		String numbers = "17";
-		
+		String numbers = "137";
+
 		int answer = solution(numbers);
 
 	}
@@ -19,84 +19,89 @@ public class Sh {
 	// (2.04ms, 52.8MB) - > (149.65ms, 65MB)
 	private static int solution(String numbers) {
 		int answer = 0;
-		
+
 		String[] strs = numbers.split("");
-		
+
 		Arrays.sort(strs);
-		
+
 		List<Integer> list = new ArrayList<>();
-		
+
 //		String str ="";
 //		int idx = -1;
 //		int len = 1;
 //		list = func(strs,str,idx,len);
-		
-		String temp ="";
-		for(int i=0; i<strs.length; i++) {
-			temp = strs[i];
-			list.add(Integer.parseInt(temp));
-			for(int j=0; j<strs.length; j++) {
-				temp = strs[i];
-				if(i != j) {
-					temp += strs[j];
-					list.add(Integer.parseInt(temp));
-					for(int k=0; k<strs.length; k++) {
-						temp = strs[i]+strs[j];
-						if( j != k && i != k) {
-							temp += strs[k];
-							list.add(Integer.parseInt(temp));
-							for(int l=0; l<strs.length; l++) {
-								temp = strs[i]+strs[j]+strs[k];
-								if( j != l && i != l && k != l) {
-									temp += strs[l];
-									list.add(Integer.parseInt(temp));
-									for(int m=0; m<strs.length; m++) {
-										temp = strs[i]+strs[j]+strs[k]+strs[l];
-										if( j != m && i != m && k != m && l != m) {
-											temp += strs[m];
-											list.add(Integer.parseInt(temp));
-											for(int n=0; n<strs.length; n++) {
-												temp = strs[i]+strs[j]+strs[k]+strs[l]+strs[m];
-												if( j != n && i != n && k != n && l != n && m != n) {
-													temp += strs[n];
-													list.add(Integer.parseInt(temp));
-													for(int o=0; o<strs.length; o++) {
-														temp = strs[i]+strs[j]+strs[k]+strs[l]+strs[m]+strs[n];
-														if( j != o && i != o && k != o && l != o && m != o && n != o) {
-															temp += strs[o];
-															list.add(Integer.parseInt(temp));
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-		
-			}
-				
-		}
-			
-		
+
+		String temp = "";
+		boolean[] visited = new boolean[strs.length];
+		func(list, strs, temp, visited);
+//		String temp ="";
+//		for(int i=0; i<strs.length; i++) {
+//			temp = strs[i];
+//			list.add(Integer.parseInt(temp));
+//			for(int j=0; j<strs.length; j++) {
+//				temp = strs[i];
+//				if(i != j) {
+//					temp += strs[j];
+//					list.add(Integer.parseInt(temp));
+//					for(int k=0; k<strs.length; k++) {
+//						temp = strs[i]+strs[j];
+//						if( j != k && i != k) {
+//							temp += strs[k];
+//							list.add(Integer.parseInt(temp));
+//							for(int l=0; l<strs.length; l++) {
+//								temp = strs[i]+strs[j]+strs[k];
+//								if( j != l && i != l && k != l) {
+//									temp += strs[l];
+//									list.add(Integer.parseInt(temp));
+//									for(int m=0; m<strs.length; m++) {
+//										temp = strs[i]+strs[j]+strs[k]+strs[l];
+//										if( j != m && i != m && k != m && l != m) {
+//											temp += strs[m];
+//											list.add(Integer.parseInt(temp));
+//											for(int n=0; n<strs.length; n++) {
+//												temp = strs[i]+strs[j]+strs[k]+strs[l]+strs[m];
+//												if( j != n && i != n && k != n && l != n && m != n) {
+//													temp += strs[n];
+//													list.add(Integer.parseInt(temp));
+//													for(int o=0; o<strs.length; o++) {
+//														temp = strs[i]+strs[j]+strs[k]+strs[l]+strs[m]+strs[n];
+//														if( j != o && i != o && k != o && l != o && m != o && n != o) {
+//															temp += strs[o];
+//															list.add(Integer.parseInt(temp));
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//		
+//			}
+//				
+//		}
+
+		for (int inted : list)
+			System.out.println(inted);
+
 		Set<Integer> set = new HashSet<>(list);
-			
-		for(Integer i : set) {
+
+		for (Integer i : set) {
 			int cnt = 0;
-			if(i<=1)
+			if (i <= 1)
 				cnt++;
-			for(int j=2; j<=Math.sqrt(i); j++) {
-				
-				if(i%j ==0) {
+			for (int j = 2; j <= Math.sqrt(i); j++) {
+
+				if (i % j == 0) {
 					cnt++;
 					break;
 				}
 			}
-			
-			if(cnt == 0)
+
+			if (cnt == 0)
 				answer++;
 		}
 
@@ -123,5 +128,22 @@ public class Sh {
 //		
 //		
 //	}
+
+	private static void func(List<Integer> list, String[] strs, String temp, boolean[] visited) {
+
+		if (temp.length() == strs.length) {
+			return;
+		}
+
+		for (int j = 0; j < strs.length; j++) {
+			if (!visited[j]) {
+				visited[j] = true;
+				list.add(Integer.parseInt(temp + strs[j]));
+				func(list, strs, temp + strs[j], visited);
+				visited[j] = false;
+			}
+		}
+
+	}
 
 }
