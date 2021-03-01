@@ -182,6 +182,7 @@ int[] arr = new int[] {-1};
 | \w			| =[a-zA-Z0-9_]	| [a-zA-Z0-9_]	| 1,2,..,9,0,a,b,...,z,A,B,...,Z,_	|
 | ^			| 시작			| ^\d			| 12345								|
 | [^]		| Not Included	| [^\d]			| abdfjs+_-!#kajfldsfj				|
+| (?=)		| lookahead		| a(?=\\d	)	| a1, a2, a3, a4, a5					|
 
 ## IV. 그 외
 1. 온라인 코딩 테스트 시 검색 가능

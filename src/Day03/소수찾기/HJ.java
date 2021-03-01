@@ -1,11 +1,8 @@
 package Day03.소수찾기;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class HJ {
 	public static void main(String[] args) {
-		int n = 100; // 1000000*1000000
+		int n = 1000000; // 1000000*1000000
 
 		long start = System.currentTimeMillis();
 		System.out.println(solution(n));
@@ -16,39 +13,22 @@ public class HJ {
 		System.out.println("수행시간 : " + (end - start));
 	}
 
-//	// 방법 1) 시간 초과
-//	public static int solution(int n) {
-//		int answer = 0;
-//
-//		for (int i = 2; i <= n; i++) {
-//			int criteria = 0;
-//
-//			for (int j = 1; j <= i; j++)
-//				if (i % j == 0)
-//					criteria++;
-//
-//			if (criteria == 2)
-//				answer++;
-//		}
-//
-//		return answer;
-//	}
-
-	//
 	public static int solution(int n) {
 		int answer = 0;
-		List<Integer> prime = new LinkedList<>();
+		boolean numbers[] = new boolean[n + 1];
+		numbers[0] = numbers[1] = true;
 
-		for (int i = 2, len = (int) Math.sqrt(n); i <= len; i++) {
-			int count = 0;
-			for (int j = 1; j <= i; j++)
-				if (i % j == 0)
-					count++;
+		// 소수 판단
+		for (int i = 2, len = (int) Math.sqrt(n); i <= len; i++)
+			if (!numbers[i])
+				for (int j = i * i; j <= n; j += i)
+					numbers[j] = true;
 
-			if (count == 2)
-				prime.add(i);
-		}
-		
+		// 소수 개수
+		for (int i = 1; i <= n; i++)
+			if (!numbers[i])
+				answer++;
+
 		return answer;
 	}
 
