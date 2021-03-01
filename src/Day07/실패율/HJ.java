@@ -1,6 +1,10 @@
 package Day07.실패율;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class HJ {
 	/*
@@ -9,80 +13,78 @@ public class HJ {
 
 	public static void main(String[] args) {
 		int N = 5;
-		int[] stages = { 2, 1, 2, 1, 2, 4, 3, 3 };
+		int[] stages = { 2, 1, 2, 6, 2, 4, 3, 3 };
 		System.out.println(Arrays.toString(solution(N, stages)));
 	}
 
 	// 방법 1) 실패: (0.02ms, 52.3MB) - (368.08ms, 61.8MB)
 	public static int[] solution(int N, int[] stages) {
 		int[] answer = new int[N];
-		double[] failure = new double[N];
+		Map<Integer, Double> failure = new HashMap();
 
-		// answer 초기화
+		// 스테이지 초기화
 		for (int i = 0; i < N; i++)
-			answer[i] = i + 1;
+			failure.put(i + 1, 0.0);
 
-		// 실패율 계산
-		for (int i = 0; i < N; i++) {
+		// 실패율
+		for (Integer key : failure.keySet()) {
 			int count = 0;
-			for (int j = 0, people = stages.length; j < people; j++) {
-				if (i + 1 == stages[j])
-					failure[i]++;
+			for (int i = 0, len = stages.length; i < len; i++) {
+				if (key == stages[i])
+					failure.replace(key, failure.get(key) + 1);
 
-				if (i + 1 <= stages[j])
+				if (key <= stages[i])
 					count++;
 			}
 
 			if (count == 0)
-				failure[i] = 0;
+				continue;
 			else
-				failure[i] /= count;
+				failure.replace(key, failure.get(key) / count);
+		}
+		
+		System.out.println(failure);
+
+		// 정렬
+		List<Map<Integer, Double>> failureList = new LinkedList();
+		for (int i = 0; i < N; i++) {
+			Map<Integer, Double> map = new HashMap();
+			map.put(i + 1, failure.get(i + 1));
+			failureList.add(map);
 		}
 
-		System.out.println(Arrays.toString(failure));
+		failureList.sort((m1, m2) -> {
+			Integer key1 = null;
+			Integer key2 = null;
 
-		// 선택 정렬 내림차순
-		for (int i = 0; i < N - 1; i++) {
-			int max = i;
-
-			for (int j = i + 1; j < N; j++)
-				if (failure[max] < failure[j])
-					max = j;
-
-			int tempA = answer[i];
-			answer[i] = answer[max];
-			answer[max] = tempA;
-
-			double tempF = failure[i];
-			failure[i] = failure[max];
-			failure[max] = tempF;
-		}
-
-		for (int i = 0; i < N - 1; i++) {
-			int max = i;
-
-			for (int j = i + 1; j < N; j++)
-				if (failure[max] == failure[j])
-					max = j;
-
-			if (answer[i] > answer[max]) {
-				int tempA = answer[i];
-				answer[i] = answer[max];
-				answer[max] = tempA;
-
-				double tempF = failure[i];
-				failure[i] = failure[max];
-				failure[max] = tempF;
+			for (Integer key : failure.keySet()) {
+				if (m1.containsKey(key))
+					key1 = key;
+				else if (m2.containsKey(key))
+					key2 = key;
 			}
+
+			if (m1.get(key1) == m2.get(key2))
+				return (key1 > key2) ? key1 - key2 : key2 - key1;
+			else if (m1.get(key1) > m2.get(key2))
+				return (key1 > key2) ? key2 - key1 : key1 - key2;
+			else
+				return (key1 > key2) ? key1 - key2 : key2 - key1;
+		});
+		
+		System.out.println(failureList);
+
+		for (int i = 0, size = failureList.size(); i < size; i++) {
+			Integer index = null;
+			for (Integer key : failure.keySet())
+				if (failureList.get(i).containsKey(key))
+					index = key;
+
+			answer[i] = index;
 		}
 
 		// 실패율 내림차순
 		return answer;
 	}
 
-//	public static int[] solution(int N, int[] stages) {
-//        int[] answer = {};
-//        
-//        return answer;
-//    }
 }

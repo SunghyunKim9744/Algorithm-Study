@@ -16,23 +16,6 @@ public class HJ {
 
 	public static int[] solution(int brown, int yellow) {
 		int[] answer = new int[2];
-
-		for (int i = 0; 0 < yellow; i++) {
-			System.out.println(yellow);
-			int bBlock = yellow * 2 + ((int) Math.pow(2, i) + 2) * 2;
-
-			if (bBlock == brown) {
-				int row = yellow + 2;
-				int col = (int) Math.pow(2, i) + 2;
-
-				answer[0] = (row >= col) ? row : col;
-				answer[1] = (row >= col) ? col : row;
-
-				break;
-			}
-
-			yellow /= 2;
-		}
 		
 		return answer;
 	}
