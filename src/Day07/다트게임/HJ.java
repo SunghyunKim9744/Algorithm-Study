@@ -1,7 +1,5 @@
 package Day07.다트게임;
 
-import java.util.Arrays;
-
 public class HJ {
 	public static void main(String[] args) {
 		String dartResult = "10D*2S#10S*";
@@ -10,9 +8,12 @@ public class HJ {
 
 	public static int solution(String dartResult) {
 		int answer = 0;
+
 		int[] scores = new int[3];
 		dartResult = dartResult.replace("10", "t");
 		String[] stages = dartResult.split("(?=\\d|t)");
+
+
 
 		for (int i = 0; i < 3; i++) {
 			String[] dart = stages[i].split("");
@@ -45,6 +46,7 @@ public class HJ {
 
 		for (int i = 0; i < 3; i++)
 			answer += scores[i];
+
 
 		return answer;
 	}

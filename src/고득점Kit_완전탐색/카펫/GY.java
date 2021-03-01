@@ -1,4 +1,4 @@
-package 고득점Kit.완전탐색.카펫;
+package 고득점Kit_완전탐색.카펫;
 
 public class GY {
 

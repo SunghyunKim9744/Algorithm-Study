@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class Hash_건영 {
 
@@ -16,6 +17,7 @@ public class Hash_건영 {
 		HashMap<String, String> map6 = new HashMap<String, String>() {
 			{// 초기값 지정
 				put("a", "b");
+				put("c", "d");
 			}
 		};
 
@@ -60,6 +62,18 @@ public class Hash_건영 {
 			int key = keys.next();
 			System.out.println("[Key]:" + key + " [Value]:" + map.get(key));
 		}
+
+		System.out.println();
+		
+		// hashmap은 순서를 보장하지 않는다.
+		Map<Integer, String> map0 = new HashMap<>();
+		map0.put(100, "a");
+		map0.put(2, "d");
+		map0.put(5, "c");
+		map0.put(3, "b");
+		map0.put(4, "e");
+
+		System.out.println(map0.toString());
 
 	}
 
