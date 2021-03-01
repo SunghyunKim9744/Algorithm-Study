@@ -8,16 +8,11 @@ public class HJ {
 
 	public static int solution(String dartResult) {
 		int answer = 0;
-		int[] scores = new int[3];
-		String[] darts = dartResult.split("");
+		dartResult = dartResult.replace("10", "a");
+		String[] scores =dartResult.split("(?=\\d|a)");
 
-		for (int i = 0, len = dartResult.length(); i < len; i++) {
-			if(darts[i].equals("1") && darts[i+1].equals("1"))
-			if (48 <= dartResult.charAt(i) && dartResult.charAt(i) <= 57) {
-				int num = Integer.parseInt(darts[i]);
-			}
-		}
-
+		for(String str : scores)
+			System.out.println(str);
 		return answer;
 	}
 }

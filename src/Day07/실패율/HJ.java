@@ -20,7 +20,7 @@ public class HJ {
 	// 방법 1) 실패: (0.02ms, 52.3MB) - (368.08ms, 61.8MB)
 	public static int[] solution(int N, int[] stages) {
 		int[] answer = new int[N];
-		Map<Integer, Double> failure = new HashMap();
+		Map<Integer, Double> failure = new HashMap<>();
 
 		// 스테이지 초기화
 		for (int i = 0; i < N; i++)
@@ -46,13 +46,16 @@ public class HJ {
 		System.out.println(failure);
 
 		// 정렬
-		List<Map<Integer, Double>> failureList = new LinkedList();
+		List<Map<Integer, Double>> failureList = new LinkedList<>();
 		for (int i = 0; i < N; i++) {
-			Map<Integer, Double> map = new HashMap();
+			Map<Integer, Double> map = new HashMap<>();
 			map.put(i + 1, failure.get(i + 1));
 			failureList.add(map);
 		}
 
+		// 1 : 0 ,
+		// 2 : 0.5 ,
+		// 3 : 0
 		failureList.sort((m1, m2) -> {
 			Integer key1 = null;
 			Integer key2 = null;

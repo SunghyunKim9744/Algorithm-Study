@@ -8,6 +8,7 @@ public class Dy {
 		System.out.println(solution(brown, yellow));
 	}
 
+	// (0.01ms, 54.2MB) - > (12.06ms, 52.6MB)
 	public static int[] solution(int brown, int yellow) {
 		int[] answer = {};
         answer = new int[2];

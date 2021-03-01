@@ -98,7 +98,7 @@ public class Sh {
 //		List<Entry<Integer,Double>> list = new ArrayList<>(map.entrySet());
 //		
 //		list.sort((m1,m2)->{
-//			return m2.getValue().compareTo(m2.getValue());
+//			return m2.getValue().compareTo(m1.getValue());
 //		});
 ////		list.sort(new Comparator<Entry<Integer,Double>>() {
 ////
