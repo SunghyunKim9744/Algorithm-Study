@@ -1,8 +1,5 @@
 package 고득점Kit_완전탐색.카펫;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class GY {
 
 	public static void main(String[] args) {

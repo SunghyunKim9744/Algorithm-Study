@@ -1,4 +1,4 @@
-package 고득점Kit_완전탐색.소수찾기;
+package 고득점Kit.완전탐색.소수찾기;
 
 public class HJ {
 
