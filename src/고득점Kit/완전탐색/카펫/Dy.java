@@ -1,4 +1,4 @@
-package 고득점Kit_완전탐색.카펫;
+package 고득점Kit.완전탐색.카펫;
 
 // 2:09 ~ 2:17
 public class Dy {
@@ -8,7 +8,6 @@ public class Dy {
 		System.out.println(solution(brown, yellow));
 	}
 
-	// (0.01ms, 54.2MB) - > (12.06ms, 52.6MB)
 	public static int[] solution(int brown, int yellow) {
 		int[] answer = {};
         answer = new int[2];

@@ -1,4 +1,4 @@
-package 고득점Kit_완전탐색.소수찾기;
+package 고득점Kit.완전탐색.소수찾기;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,25 +32,6 @@ public class Sh {
 //		list = func(strs,str,idx,len);
 		
 		String temp ="";
-		
-//		System.out.println("한 개");
-//		// 1개 짜리일 때
-//		for(int i=0; i<strs.length; i++) {
-//			list.add(Integer.parseInt(strs[i]));
-//			System.out.println(strs[i]);
-//			for(int j=0; j<strs.length; j++) {
-//				if(i != j) {
-//					list.add(Integer.parseInt(strs[i]+strs[j]));
-//					System.out.println(strs[i]+strs[j]);
-//				}
-//					
-//			}
-//			
-//		}
-		
-		
-		
-		
 		for(int i=0; i<strs.length; i++) {
 			temp = strs[i];
 			list.add(Integer.parseInt(temp));
