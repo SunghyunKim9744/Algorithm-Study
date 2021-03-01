@@ -135,7 +135,7 @@ public class Sh {
 			return;
 		}
 
-		for (int j = 0; j < visited.length; j++) {
+		for (int j = 0; j < strs.length; j++) {
 			if (!visited[j]) {
 				visited[j] = true;
 				list.add(Integer.parseInt(temp + strs[j]));
