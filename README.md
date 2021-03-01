@@ -19,6 +19,9 @@
 ### List
 ### Set
 ### Map
+* key-value 쌍으로 이루어짐
+* 검색/탐색 시 이진 트리 탐색 방법 사용 => O(NlogN)
+
 ### Stack
 ### Queue
 ### Deque
@@ -98,6 +101,9 @@ for(int i=0; i < arr.length - 1; i++)
 	* 해시 함수 => 해시 테이블/Hash Map
 	* key-value 사용 시
 	* 빠른 탐색/조건 확인 시
+	
+6. 그 외
+	* Hash Table과 Hash Map 차이
 
 ### 그리디
 
