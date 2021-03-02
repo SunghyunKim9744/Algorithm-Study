@@ -1,6 +1,8 @@
 package 고득점Kit.해시.전화번호목록;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class GY {
@@ -18,7 +20,6 @@ public class GY {
 
 	}
 
-	// 11번 케이스 통과 못함
 	public static boolean solution(String[] phone_book) {
 		boolean answer = true;
 
@@ -29,30 +30,19 @@ public class GY {
 				shortLength = s.length();
 			}
 
-//		int number = 0;
-//		for (String s : phone_book) {
-//			if (s.length() == shortLength) {
-//				number++;
-//			}
-//		}
-//
-//		int[] prefix = new int[number];
-//		int prefixIndex = 0;
-//		for (int i = 0; i < phone_book.length; i++) {
-//			if (phone_book[i].length() == shortLength) {
-//				prefix[prefixIndex] = i;
-//				prefixIndex++;
-//			}
-//		}
-
 		Map<String, Integer> map = new HashMap<>();
+		List<String> list = new LinkedList<>();
 		for (String s : phone_book) {
 			String key = s.substring(0, shortLength);
-			System.out.println(key);
 			map.put(key, map.getOrDefault(key, 0) + 1);
 			if (map.get(key) == 2)
-				return false;
+				list.add(key);
 		}
+
+		for (String str : list)
+			for (String number : phone_book)
+				if (str.equals(number))
+					return false;
 
 		return answer;
 	}
