@@ -64,7 +64,6 @@ public class Dy {
 		answer = new int[ansList.size()];
 		for(int i=0; i<ansList.size(); i++) {
 			answer[i] = ansList.get(i);
-			System.out.println(answer[i]);
 		}
 		
 		return answer;
