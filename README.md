@@ -23,7 +23,25 @@
 * 검색/탐색 시 이진 트리 탐색 방법 사용 => O(NlogN)
 
 ### Stack
+1. 개념
+	* 데이터를 쌓아 올리는 것
+	* 후입선출(LIFO)
+	
+2. 구현
+	* 배열 => 크기 고정
+	* 연결 리스트 => 가변적 크기
+	* push, pop, peek, top, bottom, isEmpty, isFull
+
 ### Queue
+1. 개념
+	* 일렬로 선 줄
+	* 선입선출(FIFO)
+	
+2. 구현
+	* 배열
+	* 연결 리스트
+	* head, tail
+	
 ### Deque
 
 ## II. 알고리즘
