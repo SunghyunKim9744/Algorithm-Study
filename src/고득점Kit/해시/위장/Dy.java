@@ -11,12 +11,11 @@ public class Dy {
 				{ "green_turban", "headgear" } };
 		System.out.println(solution(clothes));
 	}
-// 테스트 16 〉	통과 (0.26ms, 52.2MB) 테스트 26 〉	통과 (3.40ms, 51.8MB)
+// 테스트 27 〉	통과 (0.04ms, 52.1MB) 테스트 7 〉	통과 (0.14ms, 52.3MB)
 	public static int solution(String[][] clothes) {
 		int answer = 1;
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		for(int i=0; i<clothes.length; i++) {
-			System.out.println(clothes[i][1]);
 			map.put(clothes[i][1], map.getOrDefault(clothes[i][1], 1)+1);
 		}
 		for (String key : map.keySet()) {

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class Hash_건영 {
+public class Hash_GY {
 
 	public static void main(String[] args) {
 		HashMap<String, String> map1 = new HashMap<String, String>();// HashMap생성
