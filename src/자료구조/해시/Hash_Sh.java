@@ -1,4 +1,4 @@
-package 자료구조;
+package 자료구조.해시;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package 자료구조;
+package 자료구조.큐_스택;
 
 import java.util.Stack;
 
@@ -16,8 +16,9 @@ public class Stack_GY {
 		Stack<Integer> stack2 = new Stack<>();
 		stack2.push(13);
 		stack2.push(81);
-		stack2.size(); // stack의 크기 출력 : 2
-		stack2.empty(); // stack이 비어있는지 확인 : false (비어있으면 true)
+		System.out.println(stack2.size()); // stack의 크기 출력 : 2
+		System.out.println(stack2.isEmpty()); // stack이 비어있는지 확인 : false (비어있으면 true)
+		System.out.println(stack2.empty()); 
 		stack.contains(1); // stack에 1이 있는지 확인 : false(있으면 true)
 		
 	}
