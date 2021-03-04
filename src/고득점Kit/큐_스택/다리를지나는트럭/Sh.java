@@ -16,59 +16,38 @@ public class Sh {
 	}
 
 	// 5:04 ~ 6:05
-	// (0.29ms, 52MB) - > (67.71ms, 63MB)
+	// (0.32ms, 52.4MB) - > (56.36ms, 63.1MB)
 	public static int solution(int bridge_length, int weight, int[] truck_weights) {
-		
+
 		int answer = 0;
-		
-		Queue<int[]> waitQueue = new LinkedList<>();
-		
-		for(int i=0; i<truck_weights.length; i++) 
-			waitQueue.offer(new int[] {truck_weights[i],0});
-		
-		
-		Queue<int[]> finishQueue = new LinkedList<>();
+
+		Queue<Integer> waitQueue = new LinkedList<>();
+
+		for (int i = 0; i < truck_weights.length; i++)
+			waitQueue.offer(truck_weights[i]);
+
+		Queue<Integer> finishQueue = new LinkedList<>();
 		Queue<int[]> goingQueue = new LinkedList<>();
-		
+
 		int totalWeight = 0;
-		while(finishQueue.size() != truck_weights.length) {
-			for(int[] i : goingQueue)
-				i[1]+=1;
-			if(goingQueue.size() != 0) {
-				if(goingQueue.peek()[1] == bridge_length) {
-					int[] temp = goingQueue.poll();
-					finishQueue.offer(temp);
-					totalWeight-=temp[0];
-				}
+		while (finishQueue.size() != truck_weights.length) {
+			for (int[] i : goingQueue)
+				i[1] += 1;
+
+			if (!goingQueue.isEmpty() && goingQueue.peek()[1] == bridge_length) {
+				int temp = goingQueue.poll()[0];
+				finishQueue.offer(temp);
+				totalWeight -= temp;
 			}
-			
-			if(waitQueue.size() != 0) {
-				if(waitQueue.peek()[0]+totalWeight <= weight) {
-					int[] temp = waitQueue.poll();
-					goingQueue.offer(temp);
-					totalWeight+=temp[0];
-				}
+			if (!waitQueue.isEmpty() && waitQueue.peek() + totalWeight <= weight) {
+				int temp = waitQueue.poll();
+				goingQueue.offer(new int[] {temp,0});
+				totalWeight += temp;
 			}
-			
-			
-			
-			
-			
 			answer++;
-			
-//			System.out.println("다리를 지난 트럭");
-//			for(int[] i : finishQueue)
-//				System.out.println(i[0]+" : "+i[1]);
-//			System.out.println("다리를 건너는 트럭");
-//			for(int[] i : goingQueue)
-//				System.out.println(i[0]+" : "+i[1]);
-//			System.out.println("대기 트럭");
-//			for(int[] i : waitQueue)
-//				System.out.println(i[0]+" : "+i[1]);
+
 		}
 		return answer;
 	}
-	
 
 }
-
