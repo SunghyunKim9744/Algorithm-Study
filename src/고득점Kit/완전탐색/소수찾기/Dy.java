@@ -17,7 +17,7 @@ public class Dy {
 		boolean[] sosu = new boolean[max];
 		sosu[0] = true;
 		sosu[1] = true;
-		for (int i = 2; i < max; i++) {
+		for (int i = 2; i < 4000; i++) {
 			if (!sosu[i]) {
 				for (int j = 2; j < max / i; j++) {
 					sosu[j * i] = true;
