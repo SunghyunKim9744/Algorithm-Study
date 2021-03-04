@@ -26,14 +26,20 @@ public class Sh {
 
 		List<Integer> list = new ArrayList<>();
 
-//		String str ="";
-//		int idx = -1;
-//		int len = 1;
-//		list = func(strs,str,idx,len);
-
-		String temp = "";
-		boolean[] visited = new boolean[strs.length];
-		func(list, strs, temp, visited);
+		String[] temp = new String[strs.length];
+		boolean[] checked = new boolean[strs.length];
+		int depth = 0;
+		for(int i=0; i<strs.length; i++)
+			per(strs,temp,checked,depth,i+1,list);
+		
+//		int start = 0;
+//		for(int i=0; i<strs.length; i++)
+//			comb(strs,temp,start,depth,i+1,list);
+		
+//		String temp = "";
+//		boolean[] visited = new boolean[strs.length];
+//		func(list, strs, temp, visited);
+		
 //		String temp ="";
 //		for(int i=0; i<strs.length; i++) {
 //			temp = strs[i];
@@ -106,6 +112,44 @@ public class Sh {
 		}
 
 		return answer;
+	}
+
+//private static void comb(String[] strs, String[] temp, int start, int depth, int r, List<Integer> list) {
+//		if(depth == r) {
+//			StringBuilder str = new StringBuilder();
+//			for(int i=0; i<r; i++)
+//				str.append(temp[i]);
+//			
+//			list.add(Integer.parseInt(str.toString()));
+//			return;
+//		}
+//		
+//		for(int i=start; i<strs.length; i++) {
+//			temp[depth] = strs[i];
+//			comb(strs, temp, i+1, depth+1, r, list);
+//		}
+//		
+//	}
+
+private static void per(String[] strs, String[] temp, boolean[] checked, int depth, int r, List<Integer> list) {
+		if(depth == r) {
+			StringBuilder str = new StringBuilder();
+			for(int i=0; i<r; i++)
+				str.append(temp[i]);
+			
+			list.add(Integer.parseInt(str.toString()));
+			return;
+		}
+		
+		for(int i=0; i<strs.length; i++) {
+			if(!checked[i]) {
+				checked[i] = true;
+				temp[depth] = strs[i];
+				per(strs, temp, checked, depth+1, r, list);
+				checked[i]=false;
+			}
+		}
+		
 	}
 
 //	private static List<Integer> func(String[] strs, String str, int idx,int len) {

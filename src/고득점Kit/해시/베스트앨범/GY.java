@@ -68,7 +68,7 @@ public class GY {
 
 }
 
-class Song /* implements Comparable */ {
+class Song /* implements Comparable<Song> */ {
 	private int number;
 	private String genre;
 	private int numberOfPlay;
