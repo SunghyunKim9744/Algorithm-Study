@@ -11,7 +11,7 @@ public class Dy {
 //		System.out.println(solution(name2));
 
 	}
-
+	// 테스트 6 〉	통과 (0.02ms, 52.1MB) 테스트 5 〉	통과 (0.05ms, 52MB)
 	private static int solution(String name) {
 		int answer = 0;
 		char[] names = name.toCharArray();
