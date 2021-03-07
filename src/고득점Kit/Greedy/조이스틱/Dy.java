@@ -1,6 +1,6 @@
 package 고득점Kit.Greedy.조이스틱;
 
-// 11:35 ~
+// 11:35 ~ 1:11
 public class Dy {
 
 	public static void main(String[] args) {
@@ -23,10 +23,10 @@ public class Dy {
 			}
 		}
 		int min = names.length-1;
-		for(int i=1; i<names.length-1; i++) {
+		for(int i=1; i<names.length; i++) {
 			if(names[i] == 'A') {
 				int[] aLength = {i,i};
-				for(int j=i+1; j<names.length-1; j++) {
+				for(int j=i+1; j<names.length; j++) {
 					if(names[j] == 'A') {
 						aLength[1] = j;
 					}else {
@@ -41,13 +41,10 @@ public class Dy {
 				if(min > right) {
 					min = right;
 				}
-				System.out.println("l"+aLength[0]);
-				System.out.println("r"+aLength[1]);
 			}else {
 				continue;
 			}
 		}
-		
 		
 		answer += min;
 		return answer;
