@@ -11,7 +11,7 @@ public class Dy {
 			System.out.println(key);
 		}
 	}
-	//효율성 테스트 5 〉	통과 (76.50ms, 69.2MB)테스트 2 〉	통과 (108.39ms, 76.8MB)
+	//효율성 테스트 5 〉	통과 (76.50ms, 69.2MB)
 	public static int[] solution(int[] prices) {
 		int[] answer = new int[prices.length];
 		for(int i=0; i<prices.length; i++)
