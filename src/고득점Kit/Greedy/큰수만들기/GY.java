@@ -14,6 +14,7 @@ public class GY {
 
 	// 9:47 ~ 9:54 풀이방법 생각 안남
 	// 9:51 ~
+	// 0.04ms ~ 8363.24ms
 	private static String solution(String number, int k) {
 
 		String answer = "";
@@ -31,15 +32,11 @@ public class GY {
 					index = j + 1;
 				}
 			}
-
 			sb.append(max);
-			System.out.println(index);
 		}
-
 		answer = sb.toString();
 		
 		return answer;
-
 	}
 
 }
