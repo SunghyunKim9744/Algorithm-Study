@@ -7,7 +7,7 @@ public class PermutationAndCombination {
 
 	public static void main(String[] args) {
 
-		String[] arr = { "a", "b", "c" };
+		String[] arr = { "a", "b", "c","d" };
 
 		List<String> list = new ArrayList<>();
 		String[] temp = new String[arr.length];
