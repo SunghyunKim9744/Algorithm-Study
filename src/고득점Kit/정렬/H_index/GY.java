@@ -1,4 +1,4 @@
-package 자료구조.정렬.H_index;
+package 고득점Kit.정렬.H_index;
 
 public class GY {
 

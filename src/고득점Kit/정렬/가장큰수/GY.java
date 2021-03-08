@@ -1,4 +1,4 @@
-package 자료구조.정렬.가장큰수;
+package 고득점Kit.정렬.가장큰수;
 
 public class GY {
 
