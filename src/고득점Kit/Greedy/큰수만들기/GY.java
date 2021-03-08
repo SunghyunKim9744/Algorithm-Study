@@ -14,32 +14,29 @@ public class GY {
 
 	// 9:47 ~ 9:54 풀이방법 생각 안남
 	// 9:51 ~
+	// 0.04ms ~ 8363.24ms
 	private static String solution(String number, int k) {
-		
+
 		String answer = "";
 
-		String[] number2 = number.split("");
-		int[] number3 = new int[number2.length];
+		StringBuilder sb = new StringBuilder();
 
-		int maxNum = 0;
-		int maxIndex = 0;
-		for (int i = 0; i < number2.length; i++) {
-			
-			number3[i] = Integer.parseInt(number2[i]);
-			
-			if (maxNum < number3[i]) {
-				maxNum = number3[i];
-				maxIndex = i;
+		int index = 0;
+
+		for (int i = 0; i < number.length() - k; i++) {
+			char max = '0';
+
+			for (int j = index; j <= i + k; j++) {
+				if (max < number.charAt(j)) {
+					max = number.charAt(j);
+					index = j + 1;
+				}
 			}
-			
+			sb.append(max);
 		}
-
-		System.out.println(maxNum);
-		System.out.println(maxIndex);
-		System.out.println(number);
-
-		return answer;
+		answer = sb.toString();
 		
+		return answer;
 	}
 
 }
