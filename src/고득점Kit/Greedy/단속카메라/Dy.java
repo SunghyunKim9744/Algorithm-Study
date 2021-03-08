@@ -1,4 +1,6 @@
-package 고득점Kit.Greedy.단속카메라;
+ package 고득점Kit.Greedy.단속카메라;
+
+import java.util.Arrays;
 
 public class Dy {
 
@@ -11,6 +13,10 @@ public class Dy {
 
 	private static int solution(int[][] routes) {
 		int answer = 0;
+		Arrays.sort(routes[1]);
+		for(int[] key: routes) {
+		}
+			
 		return answer;
 	}
 
