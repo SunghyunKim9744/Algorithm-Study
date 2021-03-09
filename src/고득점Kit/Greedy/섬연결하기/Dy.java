@@ -28,7 +28,7 @@ public class Dy {
 			map.put(costs[i][0], map.getOrDefault(costs[i][0], 0)+costs[i][2]);
 			map.put(costs[i][1], map.getOrDefault(costs[i][1], 0)+costs[i][2]);
 			data.put(costs[i][0], new ArrayList<Integer>());
-			data.put(costs[i][0],);
+//			data.put(costs[i][0],);
 		}
 		
 		List<Entry<Integer, Integer>> entryList = new ArrayList<Map.Entry<Integer,Integer>>(map.entrySet());
