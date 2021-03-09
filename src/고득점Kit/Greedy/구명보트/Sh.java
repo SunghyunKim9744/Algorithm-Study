@@ -61,15 +61,13 @@ public class Sh {
 		
 		while(small<=big) {
 			
-			if(people[small]+people[big]<=limit) {
+			if(people[small]+people[big]<=limit) 
 				small++;
-				big--;
-				answer++;
-			}
-			else {
-				big--;
-				answer++;
-			}
+			
+			big--;
+			answer++;
+			
+	
 		}
 		
 		
