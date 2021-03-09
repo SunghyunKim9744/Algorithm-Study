@@ -1,5 +1,7 @@
 package 고득점Kit.힙.더맵게;
 
+import java.util.PriorityQueue;
+
 public class GY {
 
 	public static void main(String[] args) {
@@ -13,33 +15,28 @@ public class GY {
 
 	public static int solution(int[] scoville, int K) {
 		int answer = 0;
+
+		PriorityQueue<Integer> heap = new PriorityQueue<>();
+
+		for (int i : scoville)
+			heap.add(i);
+
+		while (heap.peek() < K) {
+			// 질문하기 참고
+			if(heap.size()==1)
+				return -1;
+			
+			int first = heap.poll();
+			int second = heap.poll();
+
+			int third = first + second * 2;
+			heap.add(third);
+			answer++;
+
+		}
+
 		return answer;
 	}
 
 }
 
-//============================================
-//public int solution(int[] scoville, int K) {
-//    int answer = 0;
-//    		PriorityQueue<Integer> heap = new PriorityQueue<>();
-//
-//	int s1 = 0, s2 = 0;
-//	for (int i : scoville) {
-//		heap.add(i);
-//	}
-//
-//	while (heap.peek() < K) {
-//		if (heap.size() == 1) {
-//			return -1;
-//		}
-//
-//		int a = heap.poll();
-//		int b = heap.poll();
-//
-//		heap.add(a + 2 * b);
-//		
-//		answer++;
-//	}
-//
-//	return answer;
-//}
