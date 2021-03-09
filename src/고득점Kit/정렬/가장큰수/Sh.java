@@ -1,7 +1,6 @@
 package 고득점Kit.정렬.가장큰수;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class Sh {
 
@@ -94,6 +93,7 @@ public class Sh {
 //		return strb.toString();
 //	}
 	
+//	(2.34ms, 51.9MB) - > (351.81ms, 83.1MB)
 	public static String solution(int[] numbers) {
 		
 		String answer = "";
