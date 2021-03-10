@@ -31,8 +31,8 @@ public class Sh {
 			
 			if(index != -1) {
 				int right = len-index;
-				int left = index;
-				if(left<=i && i<=right)
+				//int left = index;
+				if(/* left<=i &&  */i<=right)
 					return i;
 			}
 			
