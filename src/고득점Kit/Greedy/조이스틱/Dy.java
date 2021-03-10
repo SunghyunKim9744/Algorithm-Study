@@ -5,7 +5,7 @@ public class Dy {
 
 	public static void main(String[] args) {
 		
-		String name1 = "ABAAAA",name2 = "JAN";
+		String name1 = "BAABBAABAAB",name2 = "JAN";
 		
 		System.out.println(solution(name1));
 //		System.out.println(solution(name2));

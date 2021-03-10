@@ -4,7 +4,7 @@ package 고득점Kit.Greedy.큰수만들기;
 public class Dy {
 
 	public static void main(String[] args) {
-		String number1 = "1924", number2 = "1231234", number3 = "4177252841";
+		String number1 = "111199", number2 = "1231234", number3 = "4177252841";
 
 		int k1 = 2, k2 = 3, k3 = 4;
 		
@@ -65,6 +65,7 @@ public class Dy {
 					sb.append(num);
 					k -= temp.indexOf(num);
 					startNum = temp.indexOf(num) + 1;
+					System.out.println(temp.indexOf(num));
 					break;
 				}
 			}
