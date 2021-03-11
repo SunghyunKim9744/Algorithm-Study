@@ -15,6 +15,7 @@ public class Sh {
 	}
 
 	// 3:10 ~ 3:18
+	// (130.48ms, 65.4MB) - > (1557.81ms, 124MB)
 	public static int solution(int[] scoville, int K) {
 		int answer = 0;
 
