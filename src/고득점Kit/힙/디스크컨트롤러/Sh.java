@@ -1,11 +1,8 @@
 package 고득점Kit.힙.디스크컨트롤러;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class Sh {
 
@@ -51,6 +48,7 @@ public class Sh {
 //		return answer/jobs.length;
 //	}
 	
+	// (0.69ms, 52.8MB) - > (6.72ms, 53MB)
 	public static int solution(int[][] jobs) {
 		int answer = 0;
 		
@@ -72,7 +70,6 @@ public class Sh {
 			boolean bool = false;
 			for(Iterator<int[]> itr = list.iterator(); itr.hasNext();) {
 				int[] temp = itr.next();
-				System.out.println(temp[0]+" : "+temp[1]);
 				if(temp[0]<=currentTime) {		
 					currentTime+=temp[1];
 					answer+=currentTime-temp[0];
