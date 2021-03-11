@@ -23,9 +23,9 @@ public class GY {
 
 		while (heap.peek() < K) {
 			// 질문하기 참고
-			if(heap.size()==1)
+			if (heap.size() == 1)
 				return -1;
-			
+
 			int first = heap.poll();
 			int second = heap.poll();
 
@@ -39,4 +39,3 @@ public class GY {
 	}
 
 }
-

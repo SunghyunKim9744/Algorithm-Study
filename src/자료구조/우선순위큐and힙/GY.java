@@ -26,8 +26,10 @@ public class GY {
 		minHeap.add(3);
 		minHeap.add(5);
 
+		System.out.println(minHeap);
 		while (!minHeap.isEmpty())
 			System.out.println(minHeap.poll());
+		
 
 		System.out.println("===============================");
 		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());

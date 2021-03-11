@@ -18,24 +18,29 @@ public class GY {
 
 	public static void main(String[] args) {
 
-		List<Person> list = new LinkedList<>();
+//		List<Person> list = new LinkedList<>();
+//
+//		list.add(new Person(170, 56));
+//		list.add(new Person(190, 54));
+//		list.add(new Person(130, 87));
+//		list.add(new Person(120, 47));
+//		list.add(new Person(210, 72));
+//		System.out.println("정렬 전");
+//		for (Person p : list)
+//			System.out.println(p.height + " " + p.weight);
+//
+//		Collections.sort(list);
+//
+//		System.out.println();
+//		System.out.println("정렬 후");
+//
+//		for (Person p : list)
+//			System.out.println(p.height + " " + p.weight);
 
-		list.add(new Person(170, 56));
-		list.add(new Person(190, 54));
-		list.add(new Person(130, 87));
-		list.add(new Person(120, 47));
-		list.add(new Person(210, 72));
-		System.out.println("정렬 전");
-		for (Person p : list)
-			System.out.println(p.height + " " + p.weight);
-
-		Collections.sort(list);
-
-		System.out.println();
-		System.out.println("정렬 후");
-
-		for (Person p : list)
-			System.out.println(p.height + " " + p.weight);
+		Person p1 = new Person(123, 23);
+		Person p2 = new Person(234, 45);
+		
+		p1.compareTo(p2);
 
 	}
 
@@ -55,7 +60,8 @@ class Person implements Comparable<Person> {
 	@Override
 	public int compareTo(Person o) {
 		// 키에 대해 오름차순
-//		return (this.height - o.height);
+		System.out.println(o.height);
+		return (this.height - o.height);
 
 		// Integer.compare 사용 : 오름차순으로 유지될 수 있도록 값을 비교하는 메서드
 //		return Integer.compare(this.height, o.height);
@@ -71,7 +77,7 @@ class Person implements Comparable<Person> {
 //			return 1; // 현재객체 > o : 양수리턴 : 자리 바뀜 ==> 오름차순
 
 		// 삼항연산자 사용
-		return (this.height > o.height) ? 1 : ((this.height == o.height) ? 0 : -1);
+//		return (this.height > o.height) ? 1 : ((this.height == o.height) ? 0 : -1);
 
 	}
 
