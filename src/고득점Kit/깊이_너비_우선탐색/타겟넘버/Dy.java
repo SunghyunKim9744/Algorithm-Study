@@ -14,6 +14,7 @@ public class Dy {
         return answer;
     }
 	
+	// 테스트 7 〉	통과 (0.20ms, 52.6MB)  테스트 2 〉	통과 (6.23ms, 52.2MB)
 	public static int dfs(int[] numbers, int target, int deps) {
 		int num = 0;
 		if(deps == numbers.length) {
