@@ -24,7 +24,7 @@ public class Dy {
 				return 0;
 			}
 		}
-		int i = deps++;
+		int i = deps+1;
 		num += dfs(numbers, target-numbers[deps], i);
 		num += dfs(numbers, target+numbers[deps], i);
 		
