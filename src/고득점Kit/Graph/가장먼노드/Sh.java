@@ -1,8 +1,10 @@
 package 고득점Kit.Graph.가장먼노드;
 
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Queue;
 
 public class Sh {
 
@@ -18,20 +20,57 @@ public class Sh {
 
 	private static void solution(int n, int[][] vertex) {
 		
-		List<List<Integer>> list = new LinkedList<>();
+		Map<Integer,List<Integer>> graph = new HashMap<>();
 		
-		for(int i=0; i<=n; i++)
-			list.add(Arrays.asList(new Integer[] {0}));
-		
-		for(int i=0; i<vertex.length; i++) {
-			int firstNode = vertex[i][0];
-			int secondNode = vertex[i][1];
+		for(int[] arr : vertex) {
+			if(graph.get(arr[0])==null)
+				graph.put(arr[0], new LinkedList<>());
+			if(graph.get(arr[1])==null)
+				graph.put(arr[1], new LinkedList<>());
 			
-			list.get(firstNode).add(secondNode);
-			list.get(secondNode).add(firstNode);
+			graph.get(arr[0]).add(arr[1]);
+			graph.get(arr[1]).add(arr[0]);
 		}
 		
-		System.out.println(list);
+		Map<Integer,Boolean> visited = new HashMap<>();
+		for(Integer node : graph.keySet())
+			visited.put(node, false);
+		
+		Map<Integer,Integer> depth = bfs(graph,visited,1);
+		
+		int max = 0;
+		for(Integer i : depth.keySet()) {
+			if(max<depth.get(i))
+				max = depth.get(i);
+		}
+		
+		int answer = 0;
+		for(Integer i : depth.keySet()) {
+			if(max == depth.get(i))
+				answer++;
+		}
+		
+	}
+
+	private static Map<Integer, Integer> bfs(Map<Integer, List<Integer>> graph, Map<Integer, Boolean> visited, int start) {
+		Queue<Integer> que = new LinkedList<>();
+		que.offer(start);
+		visited.put(start, true);
+		
+		Map<Integer,Integer> depth = new HashMap<>();
+		depth.put(1,0);
+		while(!que.isEmpty()) {
+			Integer element = que.poll();
+			for(Integer node : graph.get(element)) {
+				if(!visited.get(node)) {
+					que.offer(node);
+					visited.put(node, true);
+					depth.put(node, depth.get(element)+1);
+				}
+			}
+		}
+		
+		return depth;
 		
 	}
 
