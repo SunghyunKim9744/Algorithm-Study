@@ -13,7 +13,25 @@ public class GY_반대진행방향 {
 //	3) x를 찾을 때 까지 반복한다
 
 	public static void main(String[] args) {
+
+	}
+
+	private static boolean isPairSum(int[] n, int x) {
 		
+		int left = 0;
+		
+		int right = n.length - 1;
+		
+		while (left < right) {
+			if (n[left] + n[right] == x)
+				return true;
+			else if (n[left] + n[right] > x)
+				right--;
+			else
+				left++;
+		}
+		
+		return false;
 	}
 
 }
