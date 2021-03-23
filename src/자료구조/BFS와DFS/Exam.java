@@ -11,7 +11,7 @@ public class Exam {
 		
 		System.out.println("================= 인접 리스트 =================");
 		int[][] listGraph = new int[9][];
-		
+	
 		listGraph[1] = new int[]{2,3,8};
 		listGraph[2] = new int[]{1,7};
 		listGraph[3] = new int[]{1,4,5};
