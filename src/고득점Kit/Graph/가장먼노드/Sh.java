@@ -18,6 +18,8 @@ public class Sh {
 
 	}
 
+	// 다익스트라로 꼭 풀어볼 것!!
+	// (0.38ms, 51.8MB) - > (161.08ms, 74MB)
 	private static void solution(int n, int[][] vertex) {
 		
 		Map<Integer,List<Integer>> graph = new HashMap<>();
