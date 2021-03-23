@@ -8,10 +8,9 @@ public class Sh {
 		int n3 = 3;
 		int n4 = 4;
 		
-		System.out.println(solution(99));
+		System.out.println(solution(14));
 	}
 
-	
 	private static String solution(int n) {
 		String answer = "";
 		
@@ -27,7 +26,8 @@ public class Sh {
 				str.append(n%3);
 				n/=3;
 			}
-				
+			
+			//n=(n-1)/3;
 			
 		}
 		
