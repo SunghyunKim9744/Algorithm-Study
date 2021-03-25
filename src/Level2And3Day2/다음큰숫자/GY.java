@@ -5,43 +5,39 @@ public class GY {
 	public static void main(String[] args) {
 		int n1 = 78;
 		int n2 = 15;
-		
-		solution(n1);
+
+		System.out.println(solution(n1));
+		System.out.println(solution(n2));
 
 	}
 
+	// 정확성 0.02ms ~ 0.05ms
+	// 효율성 0.03ms ~ 0.06ms
 	private static int solution(int n) {
-		int answer = 0;
-		
-		String a = Integer.toBinaryString(n);
-		
+
+		int answer = n + 1;
+
+		String nToBin = Integer.toBinaryString(n);
+		int nCnt = 0;
+		for (int i = 0; i < nToBin.length(); i++)
+			if (nToBin.charAt(i) == '1')
+				nCnt++;
+
+		while (true) {
+			String n2ToBin = Integer.toBinaryString(answer);
+			int n2Cnt = 0;
+			for (int i = 0; i < n2ToBin.length(); i++)
+				if (n2ToBin.charAt(i) == '1')
+					n2Cnt++;
+
+			if (nCnt == n2Cnt)
+				break;
+			else
+				answer++;
+		}
+
 		return answer;
-		
+
 	}
 
 }
-
-
-//public int solution(int n) {
-//    int answer = 0;
-//    String a = Integer.toBinaryString(n);
-//    int count1 = countOne(a);
-//    
-//    for(int i = n+1; ; i++) {
-//    	String a2 = Integer.toBinaryString(i);
-//    	int count2 = countOne(a2);
-//    	
-//    	if(count1 == count2) {
-//    		return i;
-//    	}
-//    }
-//}
-//public int countOne(String a) {
-//	char[] count = a.toCharArray();
-//	int countone = 0;
-//	for(char c : count) {
-//		if(c == '1') countone++;
-//	}
-//	
-//	return countone;
-//}
