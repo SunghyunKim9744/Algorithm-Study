@@ -5,8 +5,10 @@ public class Dy {
 	public static void main(String[] args) {
 		
 		int[][] board = {{0,1,1,1},{1,1,1,1},{1,1,1,1},{0,0,1,0}};
+		int[][] board2 = {{0,0,1,1},{1,1,1,1}};
 		
-		System.out.println(solution(board));
+//		System.out.println(solution(board));
+		System.out.println(solution(board2));
 
 	}
 
@@ -17,7 +19,6 @@ public class Dy {
 			for(int j=0; j<board[0].length; j++) {
 				start[0] = i;
 				start[1] = j;
-				System.out.println("힌반");
 				if(answer < code(board, start)) {
 					answer = code(board, start);
 				}
@@ -27,15 +28,16 @@ public class Dy {
 	}
 	private static int code(int[][] board, int[] start) {
 		int answer = 0;
-		
-		for(int i=start[0]; i<board.length; i++) {
-			for(int j=start[1]; j<board[0].length-start[0]; j++) {
+        int max = board.length;
+        
+		for(int i=start[0]; i<max; i++) {
+			for(int j=start[1]; j<max; j++) {
 				if(board[i][j] != 1) {
-					return answer;
+					max = j;
 				}
 			}
-			answer = (i-start[0]+1)*(i-start[0]+1);
 		}
+        answer = max * max;
 		return answer;
 	}
 }
