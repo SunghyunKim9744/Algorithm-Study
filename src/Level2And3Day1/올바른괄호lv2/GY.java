@@ -13,21 +13,8 @@ public class GY {
 	private static boolean solution(String s) {
 		boolean answer = true;
 		
-		int open = 0;
-		int close = 0;
 		
-		for(int i=0; i<s.length(); i++) {
-			char temp = s.charAt(i);
-			if(temp == '(')
-				open++;
-			else
-				close++;
-			if(open<close)
-				return false;
-		}
 		
-		if(open != close)
-			return false;
 		return answer;
 		
 	}
