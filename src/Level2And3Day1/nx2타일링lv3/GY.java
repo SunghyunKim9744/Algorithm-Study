@@ -13,6 +13,15 @@ public class GY {
 
 	private static int solution(int n) {
 		int answer = 0;
+		int result1 = 1;
+        int result2 = 2;
+        
+        for(int i = 2;i<n;i++){
+            answer = result1+result2;
+            answer %= 1000000007;
+            result1 = result2;
+            result2 = answer;
+        }
 		return answer;
 	}
 }
