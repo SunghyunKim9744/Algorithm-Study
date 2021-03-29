@@ -13,7 +13,20 @@ public class Sh {
 	private static int solution(int n) {
 		int answer = 0;
 		
-		return answer;
+		if(n==1)
+			return 1;
+		if(n==2)
+			return 2;
+		
+		if(n==4)
+			return 1;
+		for(int i =1; i<=n; i++)
+			if(n%i==0)
+				answer++;
+		
+	
+	return answer;
+		
 		
 	}
 
