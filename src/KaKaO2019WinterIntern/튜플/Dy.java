@@ -18,7 +18,7 @@ public class Dy {
 
 	private static int[] solution(String s) {
         int[] answer = {};
-        String[] s2 = s.split("},");
+        String[] s2 = s.split("},{");
         List<List<Integer>> list = new ArrayList<List<Integer>>();
         for(int i=0; i<s2.length; i++) {
         	String temp = s2[i].replaceAll("[^0-9,]", "");
