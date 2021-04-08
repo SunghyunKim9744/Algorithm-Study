@@ -1,6 +1,8 @@
 package KaKaO2019WinterIntern.호텔방배정;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Sh {
@@ -45,29 +47,25 @@ public class Sh {
 		int index = 0;
 		for(Long l : room_number) {
 			if(!map.containsKey(l)) {
-				map.put(l,(long) 1);
+				map.put(l,l+1);
 				answer[index++] = l;
 			}
 			else {
-				long min = 0;
-				for(Long l2 : map.keySet()) {
-					if(l2 <=l) {
-						min+= map.get(l2);
-					}
+				long temp = l;
+				List<Long> list = new ArrayList<>();
+				while(map.containsKey(temp)) {
+					list.add(temp);
+					temp = map.get(temp);
 				}
-				map.put(l, map.get(l)+1);
-				for(long i = min; min<=k; i++) {
-					if(!map.containsKey(i)) {
-						map.put(i, (long) 1);
-						answer[index++] = i;
-						break;
-					}
-				}
+				map.put(temp, temp+1);
+				answer[index++] = temp;
+				for(Long l2 : list)
+					map.put(l2,temp+1);
 			}
 		}
 		
-//		for(long l : answer)
-//			System.out.println(l);
+		for(long l : answer)
+			System.out.println(l);
 		return answer;
 	}
 	
