@@ -21,7 +21,6 @@ public class Dy {
         for(String key: gems) {
         	gemName.add(key);
         }
-        System.out.println(gemName.size());
         int min = 0;
         Map<String, Integer> map = new HashMap<>();
         
@@ -29,9 +28,6 @@ public class Dy {
         	map.put(gems[i], map.getOrDefault(gems[i], 0) + 1);
         	if(map.size() == gemName.size()) {
         		for(int j = min; j<i+1; j++) {
-        			System.out.println(j+"j");
-        			System.out.println(i+"i");
-        			System.out.println(map.get(gems[j]));
         			if(map.get(gems[j]) == 1) {
         				min = j;
         				if(answer[1] - answer[0] > i - j) {
@@ -43,13 +39,10 @@ public class Dy {
         				map.put(gems[j], map.get(gems[j]) -1);
         			}
         		}
-        		System.out.println("----");
         	}
         }
         answer[0]++;
         answer[1]++;
-        System.out.println(answer[0]);
-        System.out.println(answer[1]);
         return answer;
     }
 
