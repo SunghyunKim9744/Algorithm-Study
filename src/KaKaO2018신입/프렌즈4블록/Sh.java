@@ -106,7 +106,7 @@ public class Sh {
 				String temp = board[j].substring(i, i + 1);
 				tempList.add(temp);
 			}
-			System.out.println(tempList);
+			
 			list.add(tempList);
 
 		}
@@ -125,32 +125,32 @@ public class Sh {
 					String top = list.get(j).get(i + 1);
 					String rt = list.get(j + 1).get(i + 1);
 					if (current.equals(right) && current.equals(top) && current.equals(rt)) {
-						String cur = j + "" + i;
-						String r = (j + 1) + "" + i;
-						String t = j + "" + (i + 1);
-						String rt2 = (j + 1) + "" + (i + 1);
+						String cur = j + "," + i;
+						String r = (j + 1) + "," + i;
+						String t = j + "," + (i + 1);
+						String rt2 = (j + 1) + "," + (i + 1);
 
 						if (!temp.contains(cur)) {
 							temp.add(cur);
-							cur = j + "" + (i - remove[j]);
+							cur = j + "," + (i - remove[j]);
 							removeTemp.add(cur);
 							remove[j]++;
 						}
 						if (!temp.contains(r)) {
 							temp.add(r);
-							r = (j + 1) + "" + (i - remove[j + 1]);
+							r = (j + 1) + "," + (i - remove[j + 1]);
 							removeTemp.add(r);
 							remove[j + 1]++;
 						}
 						if (!temp.contains(t)) {
 							temp.add(t);
-							t = j + "" + ((i + 1) - remove[j]);
+							t = j + "," + ((i + 1) - remove[j]);
 							removeTemp.add(t);
 							remove[j]++;
 						}
 						if (!temp.contains(rt2)) {
 							temp.add(rt2);
-							rt2 = (j + 1) + "" + ((i + 1) - remove[j + 1]);
+							rt2 = (j + 1) + "," + ((i + 1) - remove[j + 1]);
 							removeTemp.add(rt2);
 							remove[j + 1]++;
 						}
@@ -159,17 +159,20 @@ public class Sh {
 			}
 			if(removeTemp.size() == 0)
 				return answer;
-			System.out.println(removeTemp);
+			
 			for(String s : removeTemp) {
-				int line = Integer.parseInt(s.substring(0,1));
+                String[] temp2 = s.split(",");
+				int line = Integer.parseInt(temp2[0]);
 				List<String> lineList = list.get(line);
-				int row = Integer.parseInt(s.substring(1,2));
+				int row = Integer.parseInt(temp2[1]);
 				lineList.remove(row);
 				answer++;
 				
 			}
-			System.out.println(list);
+			
 		}
+
+		
 
 		
 	}
