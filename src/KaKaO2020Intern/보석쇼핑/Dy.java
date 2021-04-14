@@ -38,6 +38,10 @@ public class Dy {
         			}else {
         				map.put(gems[j], map.get(gems[j]) -1);
         			}
+        			
+        			if(map.get(gems[j]) == 0) {
+        				map.remove(gems[j]);
+        			}
         		}
         	}
         }
