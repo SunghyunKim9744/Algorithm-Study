@@ -10,10 +10,10 @@ public class Dy {
 
 	public static void main(String[] args) {
 
-		int i1 = 2;
-		int i2 = 10;
-		int i3 = 3;
-		String[] s1 = {"09:05","09:09","09:13"};
+		int i1 = 3;
+		int i2 = 1;
+		int i3 = 2;
+		String[] s1 = {"09:00", "09:00", "09:00", "09:00", "09:00"};
 		
 		solution(i1,i2,i3,s1);
 	}

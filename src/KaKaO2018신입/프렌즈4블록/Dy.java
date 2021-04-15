@@ -2,15 +2,17 @@ package KaKaO2018신입.프렌즈4블록;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Dy {
 
 	public static void main(String[] args) {
 
-		int s1 = 6;
-		int s2 = 6;
-		String[] s3 = {"AAAAAA", "BBAATB", "BBAATB", "JJJTAA", "JJJTAA", "JJJTAA"};
+		int s1 = 3;
+		int s2 = 4;
+		String[] s3 = {"AACC","AABB","CCCC"};
+
 				
 		
 		System.out.println(solution(s1,s2,s3));
@@ -18,7 +20,7 @@ public class Dy {
 	}
 	private static int solution(int m, int n, String[] board) {
         int answer = 0;
-        Set<String> set = new HashSet<>();
+        Set<String> set = new LinkedHashSet<>();
         String[][] newBoard = new String[m][n];
         for(int i=0; i<board.length; i++) {
         	newBoard[i] = board[i].split("");
@@ -52,6 +54,7 @@ public class Dy {
 	        System.out.println("------------");
 	        if(set.isEmpty())
 	        	break;
+	        
 	        
 	        answer += set.size();
 	        for(String key: set) {
