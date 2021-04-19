@@ -13,8 +13,8 @@ import java.util.Set;
 public class Sh {
 
 	public static void main(String[] args) {
-		int[] food_times = {3,3,2};
-		long k = 10;
+		int[] food_times = {3,1,2};
+		long k = 5;
 		
 		int answer = solution(food_times,k);
 
@@ -31,14 +31,14 @@ public class Sh {
 		for(int i : food_times)
 			set.add(i);
 		List<Integer> list = new ArrayList<>(set);
-		k--;
+		
 		int temp = 0;
-		while(k != 0) {
+		while(k != -1) {
 			System.out.println("몇번");
 			System.out.println(k);
 			long min = (long)list.get(0)-temp;
 			int len = map.size();
-			if(min*len < k) {
+			if(min*len <= k) {
 				k-=min*len;
 				temp = list.get(0);
 				list.remove(0);
@@ -47,21 +47,25 @@ public class Sh {
 					if(iter.next().getValue() == temp)
 						iter.remove();
 				}
+				if(map.isEmpty())
+					return -1;
 			}
-			if(min*len >=k) {
+			else if(min*len >k) {
 				System.out.println("hi");
 				System.out.println(k);
-				int turn = (int) (k%map.size()+1);
+				int turn = (int) (k%map.size());
 				System.out.println(turn);
 				
 				int index = 0;
+				System.out.println(map);
 				for(Integer i : map.keySet()) {
 					if(index == turn) {
 						answer = i;
-						k=0;
+						k=-1;
 						break;
 					}
 					index++;
+					
 						
 				}
 			}

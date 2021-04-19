@@ -31,7 +31,7 @@ public class Sh {
 			String small = answerList.get(i);
 			for(int j=i+1; j<answerList.size(); j++) {
 				String big = answerList.get(j);
-				if(big.contains(small)) {
+				if(big.matches(small)) {
 					answerList.remove(j);
 					j--;
 				}
@@ -52,21 +52,16 @@ public class Sh {
 				temps.append(temp[i]);
 			}
 			
-			for(String s : answerList) {
-				if(temps.toString().contains(s))
-					return;
-			}
+            
 			String[] rows = new String[relation.length];
 			Set<String> set = new HashSet<>();
 			for(int i=0; i<rows.length; i++) {
 				StringBuilder strb = new StringBuilder();
 				for(int j : index)
 					strb.append(relation[i][j]+",");
-			
 				set.add(strb.toString());
 			}
 			if(set.size() == rows.length) {
-				System.out.println(temps.toString());
 				answerList.add(temps.toString());
 			}
 			return;
@@ -74,20 +69,18 @@ public class Sh {
 		
 		for (int i = start; i < relation[0].length; i++) {
 			temp[depth] = String.valueOf(i);
-			StringBuilder tempStr = new StringBuilder();
-			for(int j=0; j<depth+1; j++)
-				tempStr.append(temp[j]);
-			
-		
-			
-			if(!answerList.contains(tempStr.toString()))
-				comb(relation,temp,i+1,depth+1,r,answerList);
-			
+			comb(relation,temp,i+1,depth+1,r,answerList);
+          
+            
 		}
 		
 		
 		
 	}
+		
+		
+		
+	
 
 
 }
