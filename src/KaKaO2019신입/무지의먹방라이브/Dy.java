@@ -17,13 +17,15 @@ public class Dy {
         long zeroLength = 0;
         while(cycle != 0) {
 	        for(int i=0; i<food_times.length; i++) {
-	        	if(food_times[i] != 0 && food_times[i] <= cycle) {
-	        		zeroLength++;
-	        		remain = remain + cycle - food_times[i];
-	        		food_times[i] = 0;
-	        	}else {
-	        		food_times[i] -= cycle;
-	        	}
+	        	if(food_times[i] != 0) {
+	        		if(food_times[i] <= cycle) {
+		        		zeroLength++;
+		        		remain = remain + cycle - food_times[i];
+		        		food_times[i] = 0;
+		        	}else {
+		        		food_times[i] -= cycle;
+		        	}
+	        	} 
 	        }
 	        if(zeroLength == food_times.length)
 	        	return -1;
@@ -39,7 +41,6 @@ public class Dy {
         		remain--;
         	}
         }
-        System.out.println(answer);
         return answer;
     }
 
