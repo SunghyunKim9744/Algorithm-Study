@@ -4,8 +4,8 @@ public class Dy {
 
 	public static void main(String[] args) {
 
-		int[] f = {1,1,1,1};
-		long k = 4;
+		int[] f = {3,3,2,3,4};
+		long k = 14;
 		System.out.println(solution(f, k));
 
 	}
