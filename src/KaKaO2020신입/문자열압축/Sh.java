@@ -3,7 +3,7 @@ package KaKaO2020신입.문자열압축;
 public class Sh {
 
 	public static void main(String[] args) {
-		String s = "xababcdcdababcdcd";
+		String s = "abcabcdeddedd";
 		
 		int answer = solution(s);
 
@@ -47,8 +47,11 @@ public class Sh {
 			}
 			
 			int len = strb.length() + last;
-			if(max > len) 
+			if(max > len) {
+				System.out.println(strb.toString());
 				max = len;
+			}
+				
 			
 		}
 		answer = max;
