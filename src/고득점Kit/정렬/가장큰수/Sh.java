@@ -97,7 +97,7 @@ public class Sh {
 	public static String solution(int[] numbers) {
 		
 		String answer = "";
-
+		
 		String[] strNumbers = new String[numbers.length];
 
 		for (int i = 0; i < strNumbers.length; i++)
