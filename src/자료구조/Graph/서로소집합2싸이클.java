@@ -27,8 +27,8 @@ public class 서로소집합2싸이클 {
 			String vertex = Character.toString(ch+i);
 			table.put(vertex, vertex);
 		}
-		
-		String[] edges = {"AB","BC","AC"};
+		 
+		String[] edges = {"AB","AC","BC"};
 		
 		boolean cycle = false;
 		for(String edge : edges) {
@@ -59,9 +59,8 @@ public class 서로소집합2싸이클 {
 		String vertexBParent = findParent(table,vertexB);
 		
 		int value = vertexAParent.compareTo(vertexBParent);
-		
 		if(value < 0) {
-			table.put(vertexBParent, vertexAParent);
+			table.put(vertexBParent, vertexAParent); 
 		}
 		else {
 			table.put(vertexAParent, vertexBParent);
