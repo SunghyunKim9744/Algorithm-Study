@@ -7,8 +7,8 @@ public class Dy {
 
 	public static void main(String[] args) {
 		
-		String s = "abcaabcaabca";
-		solution(s);
+		String s = "abcabcdedded";
+		System.out.println(solution(s));
 
 	}
 	
@@ -28,16 +28,16 @@ public class Dy {
         		if(before.equals(sb.toString())) {
         			count++;
         			if(j == words.length/i -1) {
-        				if(count >= 1000){
+        				if(count >= 999){
                 			length += (count * i) - 4;
                 			count = 0;
-                		}else if(count >= 100){
+                		}else if(count >= 99){
                 			length += (count * i) - 3;
                 			count = 0;
-                		}else if(count >= 10){
+                		}else if(count >= 9){
                 			length += (count * i) - 2;
                 			count = 0;
-                		}else if(count >= 1){
+                		}else if(count >= 0){
                 			length += (count * i) - 1;
                 			count = 0;
                 		}
