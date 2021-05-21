@@ -40,6 +40,7 @@ public class Sh {
 		for(int i=1; i<=n; i++) {
 			int temp = distMap.get(i);
 			Map<Integer,Integer> tempDist = diijkstra(i,graph,n);
+			System.out.println(tempDist);
 			int ia = tempDist.get(a);
 			int ib = tempDist.get(b);
 			
