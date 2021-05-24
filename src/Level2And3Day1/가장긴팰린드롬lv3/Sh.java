@@ -8,7 +8,7 @@ public class Sh {
 
 	public static void main(String[] args) {
 		
-		String s = "ecdabbeadc";
+		String s = "abcbaczcz";
 		
 		System.out.println(solution(s));
 
@@ -82,6 +82,7 @@ public class Sh {
                 int j = i+k-1; // k길이 만큼 떨어진 index
                 if( a[i] == a[j] && dp[i+1][j-1] == 1 ) { // 문자열이 같고, [i-1][j+1] 가 팰린드롬이라면
                     dp[i][j] = 1;
+                    System.out.println(a[i]+""+""+a[j]+dp[i+1][j-1]);
                     answer = Math.max(answer,k);
                 }
             }
