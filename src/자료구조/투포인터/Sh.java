@@ -22,13 +22,14 @@ public class Sh {
 		int count = arr.length;
 		
 		int sum = 0;
-		
+		int play = 0;
 		int num = 0;
 		for(int start=0; start<count; start++) {
-			
+			play++;
 			while(sum < total && end < count) {
 				sum+= arr[end];
 				end++;
+				play++;
 			}
 			
 			if(sum == total) {
@@ -38,6 +39,8 @@ public class Sh {
 			
 			sum -= arr[start];
 		}
+		
+		System.out.println(play);
 	}
 
 }

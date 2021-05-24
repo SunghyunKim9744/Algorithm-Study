@@ -30,7 +30,7 @@ public class 크루스칼Sh {
 		edges.sort((e1,e2)->{
 			return e1.getValue()-e2.getValue();
 		});
-		
+		System.out.println(edges);
 		int money = 0;
 		
 		// 그래프 생성
