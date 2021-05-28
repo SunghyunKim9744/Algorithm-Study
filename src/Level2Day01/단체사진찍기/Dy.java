@@ -1,4 +1,4 @@
-package Level2And3Day4.카카오프렌즈컬러링북;
+package Level2Day01.단체사진찍기;
 
 public class Dy {
 

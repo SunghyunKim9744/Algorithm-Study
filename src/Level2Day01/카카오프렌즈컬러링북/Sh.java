@@ -1,6 +1,6 @@
-package Level2And3Day4.단체사진찍기;
+package Level2Day01.카카오프렌즈컬러링북;
 
-public class Dy {
+public class Sh {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
