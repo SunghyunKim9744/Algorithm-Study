@@ -1,68 +1,68 @@
 package Level2Day03.괄호회전하기;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 public class Dy {
 
 	public static void main(String[] args) {
 
-		String n = "abcdefghijklmn.p";
-		solution(n);
+		String n = "{{{{{{{";
+		System.out.println(solution(n));
 	}
 	
-	public static String solution(String new_id) {
-        String answer = "";
-        
-        String temp = new_id.toLowerCase();
-        
-        temp = temp.replaceAll("[^a-z0-9-_.]", "");
-
-        String[] temp2 = temp.split("");
-        
-        StringBuilder sb = new StringBuilder();
-        int num = 0;
-        for(int i=0; i<temp2.length; i++) {
-        	if(temp2[i].equals(".")) {
-        		num++;
-        	}else {
-        		if(num > 0) {
-        			sb.append(".");
-        			num = 0;
+	public static int solution(String s) {
+        int answer = s.length();
+        String[] s2 = s.split("");
+        Queue<String> queue = new LinkedList<>();
+        for(String key: s2) {
+        	queue.add(key);
+        }
+        boolean ok;
+        for(int i=0; i<s.length(); i++) {
+        	ok = true;
+        	Stack<String> stack = new Stack<>();
+        	for(String key: queue) {
+        		if(key.equals("[") || key.equals("{") || key.equals("(")) {
+        			stack.push(key);
+        		}else {
+        			switch (key) {
+					case "]":
+						if(!stack.isEmpty() && stack.peek().equals("[")) {
+							stack.pop();
+						}else {
+							ok = false;
+						}
+						break;
+					case "}":
+						if(!stack.isEmpty() && stack.peek().equals("{")) {
+							stack.pop();
+						}else {
+							ok = false;
+						}
+						break;
+					case ")":
+						if(!stack.isEmpty() && stack.peek().equals("(")) {
+							stack.pop();
+						}else {
+							ok = false;
+						}
+						break;
+					default:
+						break;
+					}
         		}
-        		sb.append(temp2[i]);
+        		if(!ok) {
+        			answer--;
+        			break;
+        		}
         	}
+        	if(ok && !stack.isEmpty()) {
+        		answer--;
+        	}
+        	queue.add(queue.poll());
         }
-        
-        temp = sb.toString();
-        if(!temp.equals("")) {
-            if(temp.substring(0,1).equals(".")) {
-            	temp = temp.substring(1, temp.length());
-            }
-            
-            if(temp.substring(temp.length()-1, temp.length()).equals(".")) {
-            	temp = temp.substring(temp.length()-1, temp.length());
-            }
-        }else {
-        	temp = "a";
-        }
-        
-        if(temp.length() > 15) {
-        	temp = temp.substring(0,15);
-            if(temp.substring(14,15).equals(".")) {
-            	temp = temp.substring(0,14);
-            }
-        }
-        answer = temp;
-        StringBuilder sb2 = new StringBuilder(temp);
-        String last = "";
-        if(temp.length() < 3) {
-        	last = temp.substring(temp.length()-1, temp.length());
-
-            for(int i = temp.length(); i<3; i++) {
-            	sb2.append(last);
-            }
-
-            answer = sb2.toString();
-        }
-        
         return answer;
     }
 
