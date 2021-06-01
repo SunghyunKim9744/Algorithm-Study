@@ -1,5 +1,8 @@
 package Level2Day02.예상대진표;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 public class Sh {
 
 	public static void main(String[] args) {
@@ -26,6 +29,7 @@ public class Sh {
 				b = b%2 ==0 ? b/2 : (b+1)/2;
 				answer++;
 			}
+			
 			return answer;
 	}
 
