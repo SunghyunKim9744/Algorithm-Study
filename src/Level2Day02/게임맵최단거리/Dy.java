@@ -13,9 +13,9 @@ public class Dy {
         int answer = -1;
         int[][] record = new int[maps.length][maps[0].length];
         
-        dfs(maps, record, 0, 0, 0);
+        dfs(maps, record, 0, 0,1);
         if(record[maps.length-1][maps[0].length-1] != 0) {
-        	answer = record[maps.length-1][maps[0].length-1]+1;
+        	answer = record[maps.length-1][maps[0].length-1];
         }
         
         return answer;
