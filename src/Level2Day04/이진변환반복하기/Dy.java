@@ -1,37 +1,39 @@
 package Level2Day04.이진변환반복하기;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Dy {
 
 	public static void main(String[] args) {
 
-		int n = 5;
-		solution(n);
+		String s = "110010101001";
+		System.out.println(solution(s));
 	}
 	
-	public static int[] solution(int n) {
-        int[] answer = {};
+	public static int[] solution(String s) {
+        int[] answer = new int[2];
         
-        List<List<Integer>> list = new LinkedList<>();
-        int num = 1;
-        int max = 0;
-        int leng = 0;
-        boolean left = true;
-        for(int i = 0; i<n+1; i++) {
-        	max += i;
-        }
-        
-        
-        if(left) {
-            for(int i = 0; i<n; i++) {
-            	list.get(i).add(leng,num);
-            }
-        }else {
+        while(!s.equals("1")) {
+        	String[] num = s.split("");
+        	StringBuilder sb = new StringBuilder();
+        	int length = 0;
+        	for(String key: num) {
+        		if(key.equals("0")) {
+        			answer[1]++;
+        		}else {
+        			length++;
+        		}
+        	}
         	
+        	while(length > 1) {
+        		sb.insert(0, length % 2);
+        		length /= 2;
+        	}
+        	
+        	if(length == 1) {
+        		sb.insert(0, 1);
+        	}
+        	s = sb.toString();
+        	answer[0]++;
         }
-        
         
         return answer;
     }
