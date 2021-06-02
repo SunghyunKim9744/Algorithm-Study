@@ -11,29 +11,17 @@ public class Dy {
 		solution(n);
 	}
 	
-	public static int[] solution(int n) {
-        int[] answer = {};
+	public static int solution(int n) {
+        int ans = 0;
         
-        List<List<Integer>> list = new LinkedList<>();
-        int num = 1;
-        int max = 0;
-        int leng = 0;
-        boolean left = true;
-        for(int i = 0; i<n+1; i++) {
-        	max += i;
+        while(n != 0) {
+        	while(n % 2 == 0) {
+        		n /= 2;
+        	}
+        	n--;
+        	ans++;
         }
-        
-        
-        if(left) {
-            for(int i = 0; i<n; i++) {
-            	list.get(i).add(leng,num);
-            }
-        }else {
-        	
-        }
-        
-        
-        return answer;
+        return ans;
     }
 
 }

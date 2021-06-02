@@ -1,5 +1,6 @@
 package Level2Day03.삼각달팽이;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class Dy {
 	public static void main(String[] args) {
 
 		int n = 5;
-		solution(n);
+		System.out.println(Arrays.toString(solution(n)));
 	}
 	
 	public static int[] solution(int n) {
@@ -16,20 +17,43 @@ public class Dy {
         
         List<List<Integer>> list = new LinkedList<>();
         int num = 1;
-        int max = 0;
-        int leng = 0;
-        boolean left = true;
-        for(int i = 0; i<n+1; i++) {
-        	max += i;
+        int step = 0;
+        int total = 0;
+        for(int i = 0; i<n; i++) {
+        	list.add(new LinkedList<Integer>());
+        	total += i+1;
         }
         
-        
-        if(left) {
-            for(int i = 0; i<n; i++) {
-            	list.get(i).add(leng,num);
-            }
-        }else {
+        for(int i = 0; i<n; i++) {
         	
+        	if(step % 3 == 0) {
+            	for(int j = 0; j<n-i; j++) {
+            		list.get(j+(step/3)*2).add(step/3,num);
+            		num++;
+            	}
+            	step++;
+        	}else if(step % 3 == 1) {
+        		for(int j = 0; j<n-i; j++) {
+            		list.get(n-1-step/3).add((step/3)+1+j,num);
+            		num++;
+            	}
+        		step++;
+        	}else {
+        		for(int j = 0; j<n-i; j++) {
+        			list.get(n-2-step/3 - j).add(list.get(n-2-step/3 - j).size() - step/3,num);
+            		num++;
+            	}
+        		step++;
+        	}
+        	answer = new int[total];
+            int ansNum = 0;
+            for(int k = 0; k<n; k++) {
+            	for(Integer key: list.get(k)) {
+            		answer[ansNum] = key;
+            		ansNum++;
+            	}
+            }
+            System.out.println(Arrays.toString(answer));
         }
         
         
