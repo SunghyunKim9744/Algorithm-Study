@@ -9,6 +9,7 @@ public class Dy {
         int[] second = {2,1,2,3,2,4,2,5};
         int[] third = {3,3,1,1,2,2,4,4,5,5};
         
+        
         int[] points = {0, 0, 0};
         int[] members = {1, 2, 3};
         int winner = 0;
