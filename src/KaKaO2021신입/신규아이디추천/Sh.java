@@ -26,8 +26,8 @@ public class Sh {
 		if(str.endsWith("."))
 			str = str.substring(0,str.length()-1);
 		
-		if(str.isBlank())
-			str +="a";
+//		if(str.isBlank())
+//			str +="a";
 		
 		if(str.length() >= 16) {
 			str = str.substring(0,15);
