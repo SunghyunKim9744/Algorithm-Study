@@ -94,7 +94,7 @@ public class PermutationAndCombination {
 		lists.clear();
 		
 		System.out.println("========= 중복 조합 =============");
-		int start4 = 1;
+		int start4 = 0;
 		for (int i = 0; i < arr.length; i++) {
 			List<String> tempList = new ArrayList<>();
 			comb2(arr, temp,start4, depth, i + 1, tempList);
@@ -116,9 +116,9 @@ public class PermutationAndCombination {
 			return;
 		}
 		
-		for(int i=start-1; i<arr.length; i++) {
+		for(int i=start; i<arr.length; i++) {
 			temp[depth] = arr[i];
-			comb2(arr, temp, i+1, depth+1, r, list);
+			comb2(arr, temp, i, depth+1, r, list);
 		}
 		
 	}
