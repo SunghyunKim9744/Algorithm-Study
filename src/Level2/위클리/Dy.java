@@ -31,7 +31,7 @@ public class Dy {
         		}
         		total += scores[j][i];
         	}
-        	
+        	          
         	int average = total / scores.length;
         	if((myPoint < min || myPoint > max ) && (myPoint != max || myPoint != min)) {
         		total -= myPoint;
