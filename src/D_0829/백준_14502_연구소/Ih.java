@@ -31,33 +31,32 @@ public class Ih {
 			}
 		}
 
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if (map[i][j] == 0) {
-					map[i][j] = 1;
-					wall(1);
-					map[i][j] = 0;
-				}
-			}
-		}
+		wall(0, 0, 0);
+
 		System.out.println(ans);
 	}
 
 	// 벽 만드는 함수
-	static void wall(int cnt) {
+	static void wall(int x, int y, int cnt) {
+
+		// 3개 이상이면 종료
+		if (cnt > 3)
+			return;
+
 		// 3개 만들었으면 스탑
 		if (cnt == 3) {
 			simul();
 			return;
 		}
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
+		for (int i = x; i < n; i++) {
+			for (int j = y; j < m; j++) {
 				if (map[i][j] == 0) {
 					map[i][j] = 1;
-					wall(cnt + 1);
+					wall(i, y + 1, cnt + 1);
 					map[i][j] = 0;
 				}
 			}
+			y = 0;
 		}
 	}
 
