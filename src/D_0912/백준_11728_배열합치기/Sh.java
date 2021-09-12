@@ -23,7 +23,7 @@ public class Sh {
 		int sizeB = Integer.parseInt(st.nextToken());
 		
 		int[] answer = new int[sizeA+sizeB];
-		
+	
 		int idx = 0;
 		st = new StringTokenizer(br.readLine());
 		while(st.hasMoreTokens())
