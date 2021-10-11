@@ -22,6 +22,7 @@ public class DFS {
 		 *  
 		 */
 		
+		System.out.println();
 		// 그래프 생성
 		Map<String,List<String>> graph = new HashMap<>();
 		
