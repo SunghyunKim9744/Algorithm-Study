@@ -28,7 +28,7 @@ public class Db {
 		boolean[] built = new boolean[n+1];
 		
 		Queue<Building> buildings = new LinkedList<>();
-		
+		int ans=0;
 		StringTokenizer st;
 		
 		for(int i=1;i<=n;i++) {

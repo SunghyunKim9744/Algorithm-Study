@@ -17,16 +17,18 @@ public class Db {
 		int[] dist = new int[MAX];
 		int[] track = new int[MAX];
 		
+		Queue<Integer> q = new LinkedList<Integer>();
+		Stack<Integer> stack = new Stack<>();
+
 		for(int i=0;i<MAX;i++) {
 			dist[i] = -1;
 			track[i] = -1;
 		}
 		
-		Queue<Integer> q = new LinkedList<Integer>();
 		q.add(n);
 		dist[n] = 0;
-		while(!q.isEmpty()) {
-			
+		
+		while(!q.isEmpty()) {	
 			int cur = q.poll();
 			
 			int next = cur-1;
@@ -38,15 +40,10 @@ public class Db {
 			next = cur*2;
 			go(q,dist,track,cur,next);
 		}
+		
 		System.out.println(dist[m]);
-		
-		Stack<Integer> stack = new Stack<>();
-		
-		int cur=m;
-		while(cur!=-1) {
-			stack.add(cur);
-			cur=track[cur];
-		}
+				
+		trace(m,stack,track);
 		
 		while(!stack.isEmpty()) {
 			System.out.print(stack.pop()+" ");
@@ -61,6 +58,12 @@ public class Db {
 			dist[next] = dist[cur]+1;
 			track[next] = cur;
 			q.add(next);
+		}
+	}
+	public static void trace(int cur, Stack<Integer> stack, int[] track) {
+		while(cur!=-1) {
+			stack.add(cur);
+			cur=track[cur];
 		}
 	}
 }
