@@ -9,125 +9,114 @@ import java.util.StringTokenizer;
 
 /*
  * 
- * 	https://www.acmicpc.net/problem/2115
+ * 	https://www.acmicpc.net/problem/13460
  * 
  */
 public class Db {
-	public static int[] dx = { 0, 0, -1, 1 };
-	public static int[] dy = { -1, 1, 0, 0 };
-	public static boolean[][] visited;
-
+	
+	public static int[] dx = {0,0,-1,1};
+	public static int[] dy = {-1,1,0,0};
+	
 	public static char[][] map;
-	public static int n;
-	public static int m;
-	public static int cnt;
-
+	public static int[][][][] d;
+	public static int n,m;
+	public static int rx,ry,bx,by,hx,hy;
+	public static int ans=-1;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		
 		StringTokenizer st = new StringTokenizer(br.readLine());
+		
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
-
+		
 		map = new char[n][m];
-		visited = new boolean[n][m];
+		d = new int[n][m][n][m];
 
-		for (int i = 0; i < n; i++) {
-			String tmp = br.readLine();
-			for (int j = 0; j < m; j++) {
-				map[i][j] = tmp.charAt(j);
-			}
-		}
-		int ans = 0;
-
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				if (map[i][j] == '.' && !visited[i][j]) {
-					bfs(i, j);
+		for(int i=0;i<n;i++) {
+			String s = br.readLine();
+			for(int j=0;j<m;j++) {
+				map[i][j] = s.charAt(j);
+				if(map[i][j]=='R') {
+					rx = i;
+					ry = j;
+					map[i][j] ='.';
+				}
+				if(map[i][j]=='B') {
+					bx = i;
+					by = j;
+					map[i][j]='.';
+				}
+				if(map[i][j]=='O') {
+					hx=i;
+					hy=j;
 				}
 			}
 		}
-
-		for (int k = 0; k < 4; k++) {
-			visited = new boolean[n][m];
-			for (int i = 0; i < n; i++) {
-				for (int j = 0; j < m; j++) {
-					if (map[i][j] == 'O' && !visited[i][j]) {
-						if(isRange(i+dx[k],j+dy[k]) &&map[i + dx[k]][j + dy[k]] == '.') {
-							cnt=0;
-							visited[i][j] = true;
-							dfs(i, j, k);
-							cnt++;
-							ans += (cnt / 2);
-						}
-//						cnt = 0;
-//						visited[i][j] = true;
-//						dfs(i, j,k);
-//						if(cnt>=2 && k==0) System.out.println(i+" "+j+" "+cnt);
+		
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<m;j++) {
+				for(int k=0;k<n;k++) {
+					for(int p=0;p<m;p++) {
+						d[i][j][k][p] = -1;
 					}
 				}
 			}
-//			System.out.println(k+" "+ans);
 		}
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				System.out.print(map[i][j]);
-			}
-			System.out.println();
-		}
+		
+		bfs();
 		System.out.println(ans);
 	}
-
-	public static void dfs(int sx, int sy, int dir) {
-		for (int k = 0; k < 4; k++) {
-			int nx = sx + dx[k];
-			int ny = sy + dy[k];
-			if (isRange(nx, ny) && map[nx][ny] == 'O') {
-				if (!visited[nx][ny]) {
-					if(isRange(nx+dx[dir],ny+dy[dir]) &&map[nx + dx[dir]][ny + dy[dir]] == '.') {
-						cnt++;
-						visited[nx][ny] = true;
-						dfs(nx, ny, dir);					
-					}
-				}
-			}
-		}
-	}
-
-
-	public static void bfs(int sx, int sy) {
-
-		Queue<int[]> q = new LinkedList<>();
-		q.add(new int[] { sx, sy });
-		visited[sx][sy] = true;
-
-		while (!q.isEmpty()) {
-
+	public static void bfs() {
+	
+		d[rx][ry][bx][by]=0;
+		
+		Queue<int[]> q = new LinkedList<int[]>();
+		q.add(new int[] {rx,ry,bx,by});
+		
+		while(!q.isEmpty()) {
 			int[] tmp = q.poll();
-			int x = tmp[0];
-			int y = tmp[1];
-
-			for (int k = 0; k < 4; k++) {
-				int nx = x + dx[k];
-				int ny = y + dy[k];
-
-				if (isRange(nx, ny) && map[nx][ny] == 'X') {
-					map[nx][ny] = 'O';
+			int crx = tmp[0];
+			int cry = tmp[1];
+			int cbx = tmp[2];
+			int cby = tmp[3];
+			if(d[crx][cry][cbx][cby]>=10) return;
+			for(int k=0;k<4;k++) {
+				int[] red = move(crx,cry,dx[k],dy[k]);
+				int nrx=red[0],nry=red[1],rcnt=red[2]; 
+				int[] blue = move(cbx,cby,dx[k],dy[k]);
+				int nbx=blue[0],nby=blue[1],bcnt=blue[2];
+				
+				if(map[nbx][nby]=='O') continue;
+				if(map[nrx][nry]=='O') {
+					ans = d[crx][cry][cbx][cby]+1;
+					return;
 				}
-				if (isRange(nx, ny) && map[nx][ny] == '.') {
-					if (!visited[nx][ny]) {
-						visited[nx][ny] = true;
-						q.add(new int[] { nx, ny });
+				if(nbx==nrx && nby==nry) {
+					if(rcnt>bcnt) {
+						nrx-=dx[k];
+						nry-=dy[k];
 					}
+					else {
+						nbx-=dx[k];
+						nby-=dy[k];
+					}
+				}
+				if(d[nrx][nry][nbx][nby]==-1) {
+					d[nrx][nry][nbx][nby] = d[crx][cry][cbx][cby]+1;
+					q.add(new int[] {nrx,nry,nbx,nby});
 				}
 			}
 		}
-
 	}
-
-	public static boolean isRange(int nx, int ny) {
-		if (nx < 0 || nx >= n || ny < 0 || ny >= m)
-			return false;
-		return true;
+	public static int[] move(int x,int y,int dx,int dy) {
+		int cnt=0;
+		while(true) {
+			if(map[x+dx][y+dy] == '#' || map[x][y]=='O') break;
+			x += dx;
+			y += dy;
+			cnt++;
+		}
+		return new int[] {x,y,cnt};
 	}
 }

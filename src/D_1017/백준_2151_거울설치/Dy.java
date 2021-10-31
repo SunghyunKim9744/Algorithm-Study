@@ -53,7 +53,7 @@ public class Dy {
 			}
 		}
 		
-		solution(board, point[0][1], point[0][0], point[1][1], point[1][0], set, 0);
+		//solution(board, point[0][1], point[0][0], point[1][1], point[1][0], set, 0);
 		
 	}
 
