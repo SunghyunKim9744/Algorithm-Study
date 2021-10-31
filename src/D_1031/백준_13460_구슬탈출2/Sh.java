@@ -12,65 +12,74 @@ import java.util.StringTokenizer;
  */
 public class Sh {
 
-	static int M, N, answer;
-	static char[][] gallerys;
-	static boolean[][][] isChecked;
-	static int[] mx = {1,0};
-	static int[] my = {0,1};
-	static int[] dx = {1,-1,0,0};
-	static int[] dy = {0,0,1,-1};
+	static char[][] board;
+	static int N, M;
+	static int[] dy = { 0, 0, 1, -1 };
+	static int[] dx = { 1, -1, 0, 0 };
+	static int[] B;
+	static int[] R;
+	static int answer;
 
 	public static void main(String[] args) throws IOException {
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		M = Integer.parseInt(st.nextToken());
-		N = Integer.parseInt(st.nextToken());
-		answer = 0;
-		gallerys = new char[M][N];
-		// 동,서,남,북
-		isChecked = new boolean[M][N][4];
-		
-		for(int i=0; i<M; i++) {
-			String str = br.readLine();
-			for(int j=0; j<N; j++)
-				gallerys[i][j] = str.charAt(j);
-		}
-		
-		for(int i=0; i<M; i++) {
-			for(int j=0; j<N; j++)
-				if(gallerys[i][j] == '.') {
-					checkedPicture(i,j);
-				}
-		}
-		
-		System.out.println(answer);
-		
-	}
 
-	private static void checkedPicture(int i, int j) {
-		
-		for(int m = 0; m<2; m++) {
-			int nmy = i+my[m];
-			int nmx = j+mx[m];
-			
-			if(nmy >= M || nmx >= N || gallerys[nmy][nmx] == 'X')
-				continue;
-			
-			for(int d = 0; d < 4; d++) {
-				int cy1 = i+dy[d];
-				int cx1 = j+dx[d];
-				int cy2 = nmy + dy[d];
-				int cx2 = nmx+ dx[d];
-				
-				if(gallerys[cy1][cx1] == 'X' && gallerys[cy2][cx2] == 'X' && !isChecked[i][j][d] && !isChecked[nmy][nmx][d]) {
-					isChecked[i][j][d] = true;
-					isChecked[nmy][nmx][d] = true;
-					answer++;
-				}
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		answer = Integer.MAX_VALUE;
+		board = new char[N][M];
+
+		for (int i = 0; i < N; i++) {
+			String strs = br.readLine();
+			for (int j = 0; j < M; j++) {
+				board[i][j] = strs.charAt(j);
+				if (board[i][j] == 'B')
+					B = new int[] { i, j };
+				else if (board[i][j] == 'R')
+					R = new int[] { i, j };
 			}
 		}
-		
+
+		int cnt = 0;
+		dfs(cnt);
+		System.out.println(answer);
 	}
+
+	private static void dfs(int cnt) {
+		if (cnt > 10)
+			return;
+
+		int[] cB = new int[] { B[0], B[1] };
+		int[] cR = new int[] { R[0], R[1] };
+
+		label: for (int i = 0; i < 4; i++) {
+			if (sameLine(i)) {
+				int[] firstBall = selectBall(i);
+				int[] secondBall = firstBall == B ? R : B;
+
+			}
+		}
+
+	}
+
+	private static int[] selectBall(int i) {
+		if (i == 0) {
+			return R[1] > B[1] ? R : B;
+		} else if (i == 1) {
+			return R[1] > B[1] ? B : R;
+		} else if (i == 2) {
+			return R[0] > B[0] ? R : B;
+		} else {
+			return R[0] > B[0] ? B : R;
+		}
+	}
+
+	private static boolean sameLine(int i) {
+		if (i < 2) {
+			return B[0] == R[0];
+		} else {
+			return B[1] == R[1];
+		}
+	}
+
 }

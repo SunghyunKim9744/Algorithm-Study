@@ -12,65 +12,39 @@ import java.util.StringTokenizer;
  */
 public class Sh {
 
-	static int M, N, answer;
-	static char[][] gallerys;
-	static boolean[][][] isChecked;
-	static int[] mx = {1,0};
-	static int[] my = {0,1};
-	static int[] dx = {1,-1,0,0};
-	static int[] dy = {0,0,1,-1};
+	static int N;
+	static int[] T, P;
+	static int answer;
 
 	public static void main(String[] args) throws IOException {
-		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		M = Integer.parseInt(st.nextToken());
-		N = Integer.parseInt(st.nextToken());
-		answer = 0;
-		gallerys = new char[M][N];
-		// 동,서,남,북
-		isChecked = new boolean[M][N][4];
-		
-		for(int i=0; i<M; i++) {
-			String str = br.readLine();
-			for(int j=0; j<N; j++)
-				gallerys[i][j] = str.charAt(j);
+		N = Integer.parseInt(br.readLine());
+		T = new int[N];
+		P = new int[N];
+		answer = Integer.MIN_VALUE;
+
+		for (int i = 0; i < N; i++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			T[i] = Integer.parseInt(st.nextToken());
+			P[i] = Integer.parseInt(st.nextToken());
 		}
-		
-		for(int i=0; i<M; i++) {
-			for(int j=0; j<N; j++)
-				if(gallerys[i][j] == '.') {
-					checkedPicture(i,j);
-				}
-		}
-		
+
+		int start = 0;
+		int total = 0;
+		combination(start, total);
 		System.out.println(answer);
-		
+
 	}
 
-	private static void checkedPicture(int i, int j) {
-		
-		for(int m = 0; m<2; m++) {
-			int nmy = i+my[m];
-			int nmx = j+mx[m];
-			
-			if(nmy >= M || nmx >= N || gallerys[nmy][nmx] == 'X')
-				continue;
-			
-			for(int d = 0; d < 4; d++) {
-				int cy1 = i+dy[d];
-				int cx1 = j+dx[d];
-				int cy2 = nmy + dy[d];
-				int cx2 = nmx+ dx[d];
-				
-				if(gallerys[cy1][cx1] == 'X' && gallerys[cy2][cx2] == 'X' && !isChecked[i][j][d] && !isChecked[nmy][nmx][d]) {
-					isChecked[i][j][d] = true;
-					isChecked[nmy][nmx][d] = true;
-					answer++;
-				}
-			}
+	private static void combination(int start, int total) {
+		if (start >= N) {
+			answer = Math.max(answer, total);
+			return;
 		}
 		
+		if(start+T[start] <= N)
+			combination(start + T[start], total + P[start]);
+		combination(start + 1, total);
+
 	}
 }
