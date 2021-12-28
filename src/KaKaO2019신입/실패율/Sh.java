@@ -20,7 +20,7 @@ public class Sh {
 		
 		int[] fails = new int[N+1];
 		int[] totals = new int[N+1];
-		
+		System.out.println(0/7);
 		for(int i : stages) {
 			for(int j=1; j<=i; j++) {
 				if(j > N)
